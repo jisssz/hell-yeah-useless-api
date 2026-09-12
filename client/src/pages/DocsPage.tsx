@@ -52,7 +52,7 @@ curl -X POST "${BASE_URL}/api/v1/decision" \\
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
       <PageHeader
         badge={<Badge variant="brand">🍋 Platform Manual &amp; Satyavangmoolam</Badge>}
-        title="NARAGAM EVide? Docs"
+        title="നരകം EVIDEHHHH ? Docs"
         description="Everything you need to integrate infrastructure that nobody asked you to build. Enterprise stability for Malayalam developer satire."
         actions={
           <Link

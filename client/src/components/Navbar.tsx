@@ -22,11 +22,11 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b-2 border-black bg-[#060810]/95 backdrop-blur-md">
-      {/* Top Electric Blue Sub-Bar inspired by DigitalMalayali header */}
+      {/* Top Electric Blue Sub-Bar */}
       <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white text-[11px] font-mono font-bold py-1 px-4 flex items-center justify-between border-b border-blue-400/30">
         <div className="flex items-center gap-2">
           <span className="animate-bounce">🔥</span>
-          <span className="tracking-wide">TINKERHUB USELESS PROJECTS 3.0 • OFFICIAL MALAYALI DEVELOPER SUFFERING PORTAL</span>
+          <span className="tracking-wide">TINKERHUB USELESS PROJECTS 3.0 • നരകം EVIDEHHHH ? OFFICIAL DEVELOPER SUFFERING PORTAL</span>
         </div>
         <div className="hidden sm:flex items-center gap-3 text-[10px]">
           <span className="bg-black/30 px-2 py-0.5 rounded text-yellow-300">SLA: 99.8% POINTLESS</span>
@@ -37,13 +37,16 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-xl shadow-comic group-hover:rotate-6 transition-transform">
+          <div className="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-xl shadow-comic group-hover:rotate-6 group-hover:scale-110 transition-transform duration-200">
             <span>😂</span>
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bungee text-lg sm:text-xl tracking-wider text-white group-hover:text-yellow-400 transition-colors">
-                NARAGAM EVide?
+              <span className="font-malayalam font-black text-base sm:text-lg text-white group-hover:text-yellow-400 transition-colors leading-none">
+                നരകം
+              </span>
+              <span className="font-bungee text-sm sm:text-base tracking-wider text-yellow-400 group-hover:text-white transition-colors">
+                EVIDEHHHH ?
               </span>
               <span className="hidden sm:inline-block text-[9px] font-bungee px-2 py-0.5 rounded bg-yellow-400 text-black border border-black shadow-comic">
                 v1.0 API

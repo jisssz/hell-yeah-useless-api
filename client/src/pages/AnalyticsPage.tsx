@@ -81,7 +81,7 @@ export const AnalyticsPage: React.FC = () => {
             </span>
           </div>
         }
-        title="NARAGAM CONTROL ROOM"
+        title="നരകം EVIDEHHHH ? CONTROL ROOM"
         description="Monitoring absolutely critical nonsense. Real-time in-memory telemetry, SLA tracking, and live requests captured straight from the Render backend."
         actions={
           <div className="flex items-center gap-3">

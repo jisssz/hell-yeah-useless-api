@@ -10,6 +10,7 @@ export interface MemeCardProps {
   rotation?: string;
   badge?: string;
   className?: string;
+  animClass?: string;
 }
 
 // Custom curated vector avatars capturing the exaggerated comic energy of legendary Malayalam cinema reaction faces
@@ -74,12 +75,13 @@ export const MemeCard: React.FC<MemeCardProps> = ({
   rotation = 'rotate-0',
   badge,
   className = '',
+  animClass = '',
 }) => {
   const meta = CHARACTER_ART[character] || CHARACTER_ART.innocent;
 
   return (
     <div
-      className={`group relative rounded-2xl border-2 border-slate-800 bg-gradient-to-b ${meta.bg} p-5 backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/10 ${rotation} ${className}`}
+      className={`group relative rounded-2xl border-2 border-slate-800 bg-gradient-to-b ${meta.bg} p-5 backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/10 ${rotation} ${animClass} ${className}`}
     >
       {/* Top Banner Tag */}
       <div className="flex items-center justify-between gap-2 mb-3">
