@@ -231,10 +231,9 @@ flowchart TD
 
 # Video
 
-[Demo video link to be added before submission]  
-<!-- 🧑‍💻 HUMAN ACTION REQUIRED: Replace with your actual YouTube, Loom, or Google Drive demo video link -->
+[Watch the `നരകം EVIDEHHHH ?` Demo](docs/demo-video.mp4)
 
-*Caption: 2-minute demonstration of `നരകം EVIDEHHHH ?` showcasing the live API Playground, cURL terminal execution, rate limit enforcement, and the real-time observability control room.*
+*Full demonstration of the live API Playground, real HTTP requests, API responses, rate limiting, telemetry, analytics, and the over-engineered useless API platform.*
 
 # Additional Demos
 
