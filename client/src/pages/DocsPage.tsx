@@ -1,163 +1,277 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Terminal, Shield, Zap, AlertCircle, ArrowRight } from 'lucide-react';
+import { Shield, Zap, AlertCircle, Play, CheckCircle2, Activity } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
 import { Badge } from '../components/Badge';
 import { CodeBlock } from '../components/CodeBlock';
-import { API_CATALOG } from '../data/apiCatalog';
-import { EndpointBadge } from '../components/EndpointBadge';
+import { BASE_URL } from '../services/apiClient';
 
 export const DocsPage: React.FC = () => {
-  const quickStartCurl = `# 1. Perform a health check
-curl -i http://localhost:3001/health
+  const quickStartCurl = `# 1. Perform an operational health check
+curl -i ${BASE_URL}/health
 
 # 2. Query your developer vibe with simulated key
-curl -i http://localhost:3001/api/v1/vibe \\
-  -H "X-API-Key: uk_live_myproductionkey"`;
+curl -i ${BASE_URL}/api/v1/vibe \\
+  -H "X-API-Key: uk_live_production_key"`;
+
+  const postExampleCurl = `# Send a decision dilemma over HTTP POST
+curl -X POST "${BASE_URL}/api/v1/decision" \\
+  -H "Content-Type: application/json" \\
+  -d '{"question": "Should I order biriyani?"}'`;
+
+  const successExample = `{
+  "question": "Should I order biriyani?",
+  "decision": "YES",
+  "confidence": 0.99,
+  "reason": "Biochemical entropy demands immediate indulgence. Resistance is mathematically futile.",
+  "risk_level": "High (Potential Food Coma)",
+  "uselessness_score": 98.6,
+  "timestamp": "2026-09-12T07:25:58.380Z",
+  "version": "v1.0.0"
+}`;
 
   const errorExample = `{
   "error": {
-    "code": "MISSING_REQUIRED_PARAMETER",
-    "message": "Query parameter 'thing' is required. Example: /api/v1/necessity?thing=another%20todo%20app"
+    "code": "MISSING_REQUIRED_BODY",
+    "message": "Field 'question' is required in JSON body. Example: { \\"question\\": \\"Should I order biriyani?\\" }"
   },
   "_meta": {
-    "timestamp": "2026-09-12T07:25:55.803Z",
+    "timestamp": "2026-09-12T07:25:58.393Z",
     "version": "v1.0.0"
   }
 }`;
 
+  const rateLimitError = `{
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Rate limit exceeded. Please calm down."
+  }
+}`;
+
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
       <PageHeader
-        badge={<Badge variant="brand">Developer Documentation</Badge>}
-        title="Developer Platform Guide"
-        description="Complete reference for integrating and authenticating against USELESS API microservices."
+        badge={<Badge variant="brand">Platform Manual & Reference</Badge>}
+        title="Documentation"
+        description="Everything you need to integrate infrastructure that should probably not exist."
+        actions={
+          <Link
+            to="/playground"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono text-xs font-bold transition-colors shadow-sm"
+          >
+            <Play className="w-3.5 h-3.5" />
+            <span>Open Playground</span>
+          </Link>
+        }
       />
 
-      {/* What is USELESS API */}
+      {/* 1. Quick Start Flow */}
       <section className="space-y-4">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
-          <Terminal className="w-5 h-5 text-emerald-400" />
-          What is USELESS API?
+        <h2 className="text-lg font-bold text-white font-mono flex items-center gap-2 border-b border-slate-800 pb-2">
+          <Zap className="w-5 h-5 text-amber-400" />
+          1. Quick Start
         </h2>
-        <p className="text-sm text-slate-300 leading-relaxed font-mono">
-          USELESS API provides mission-critical developer infrastructure for problems nobody has. 
-          While existing API platforms solve trivial tasks like payment processing or email dispatch, 
-          USELESS API tackles existential quandaries: evaluating codebase vibes, producing developer demotivation, 
-          and generating mathematically unassailable excuses for catastrophic deadline slippage.
+        <p className="text-xs text-slate-300 font-mono leading-relaxed">
+          Follow this 4-step workflow to integrate USELESS API into your local terminal or frontend client:
         </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
+          <div className="p-4 rounded-lg border border-slate-800 bg-slate-900/40">
+            <div className="text-emerald-400 font-bold mb-1">Step 1: Choose an API</div>
+            <p className="text-slate-400">Select one of our 6 endpoints from the API Catalog.</p>
+          </div>
+          <div className="p-4 rounded-lg border border-slate-800 bg-slate-900/40">
+            <div className="text-indigo-400 font-bold mb-1">Step 2: Copy the Endpoint</div>
+            <p className="text-slate-400">Grab the path (e.g. <code className="text-slate-200">/api/v1/vibe</code>).</p>
+          </div>
+          <div className="p-4 rounded-lg border border-slate-800 bg-slate-900/40">
+            <div className="text-cyan-400 font-bold mb-1">Step 3: Send a Request</div>
+            <p className="text-slate-400">Execute via cURL, fetch, or our interactive Playground.</p>
+          </div>
+          <div className="p-4 rounded-lg border border-slate-800 bg-slate-900/40">
+            <div className="text-rose-400 font-bold mb-1">Step 4: Receive Pointless Output</div>
+            <p className="text-slate-400">Receive an unnecessarily detailed, satirical JSON payload.</p>
+          </div>
+        </div>
+
+        <CodeBlock code={quickStartCurl} language="bash" filename="Quickstart cURL" />
       </section>
 
-      {/* Base URL */}
+      {/* 2. Base URL */}
       <section className="space-y-4">
-        <h2 className="text-xl font-bold text-white">Base URL</h2>
-        <p className="text-sm text-slate-300 font-mono">
-          All endpoints are served over HTTP/HTTPS with versioned prefixes:
+        <h2 className="text-lg font-bold text-white font-mono border-b border-slate-800 pb-2">
+          2. Base URL & Deployment
+        </h2>
+        <p className="text-xs text-slate-300 font-mono leading-relaxed">
+          The API gateway runs on port 3001 in local development. For production deployments, set the environment variable <code className="text-slate-200">VITE_API_BASE_URL</code>.
         </p>
-        <div className="p-3.5 rounded-lg border border-slate-800 bg-[#080c14] font-mono text-sm text-emerald-400 flex items-center justify-between">
-          <span>http://localhost:3001</span>
-          <span className="text-xs text-slate-500 font-sans">Development Gateway</span>
+        <div className="p-3.5 rounded-lg border border-slate-800 bg-[#080c14] font-mono text-xs text-emerald-400 flex items-center justify-between">
+          <span>{BASE_URL}</span>
+          <span className="text-[11px] text-slate-500 font-sans">Active Target Base URL</span>
         </div>
       </section>
 
-      {/* Quick Start */}
+      {/* 3. Authentication & API Tiers */}
       <section className="space-y-4">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
-          <Zap className="w-5 h-5 text-amber-400" />
-          Quick Start
-        </h2>
-        <p className="text-sm text-slate-300 font-mono">
-          You can test the API immediately using cURL or any standard HTTP client:
-        </p>
-        <CodeBlock code={quickStartCurl} language="bash" filename="Terminal Quickstart" />
-      </section>
-
-      {/* Authentication */}
-      <section className="space-y-4">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
+        <h2 className="text-lg font-bold text-white font-mono flex items-center gap-2 border-b border-slate-800 pb-2">
           <Shield className="w-5 h-5 text-indigo-400" />
-          Simulated Authentication
+          3. Authentication & Tiers
         </h2>
-        <p className="text-sm text-slate-300 font-mono">
-          Authentication is simulated to replicate production developer-tier environments without gating access.
-          Pass keys via either header:
+        <p className="text-xs text-slate-300 font-mono leading-relaxed">
+          The API implements simulated developer tier authentication. While public access remains open, requests with recognizable key prefixes receive designated tier tags in response headers:
         </p>
         <div className="space-y-2 text-xs font-mono">
-          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/60 flex items-center justify-between">
-            <code className="text-emerald-400">X-API-Key: uk_live_your_key_here</code>
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/50 flex items-center justify-between">
+            <div>
+              <code className="text-emerald-400 font-bold">X-API-Key: uk_live_*</code>
+              <div className="text-slate-500 text-[11px] mt-0.5">High-priority enterprise uselessness</div>
+            </div>
             <Badge variant="brand">production-tier</Badge>
           </div>
-          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/60 flex items-center justify-between">
-            <code className="text-indigo-400">Authorization: Bearer uk_dev_sandbox_key</code>
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/50 flex items-center justify-between">
+            <div>
+              <code className="text-indigo-400 font-bold">Authorization: Bearer uk_dev_*</code>
+              <div className="text-slate-500 text-[11px] mt-0.5">Sandbox experimentation key</div>
+            </div>
             <Badge variant="purple">developer-sandbox</Badge>
           </div>
-          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/60 flex items-center justify-between">
-            <code className="text-slate-400">(No Key Provided)</code>
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/50 flex items-center justify-between">
+            <div>
+              <code className="text-slate-400">(No header provided)</code>
+              <div className="text-slate-500 text-[11px] mt-0.5">Default open evaluation</div>
+            </div>
             <Badge variant="neutral">guest-open-access</Badge>
           </div>
         </div>
-        <p className="text-xs text-slate-500 font-mono">
-          Every response echoes your active tier in the <code className="text-slate-400">X-API-Tier</code> header.
-        </p>
       </section>
 
-      {/* Rate Limiting */}
+      {/* 4. GET APIs */}
       <section className="space-y-4">
-        <h2 className="text-xl font-bold text-white">Rate Limiting & Telemetry</h2>
-        <p className="text-sm text-slate-300 font-mono">
-          The API enforeces an in-memory rate limit of <strong>100 requests per minute</strong> per client IP address. 
-          Standard RFC rate-limit headers are included with every response:
+        <h2 className="text-lg font-bold text-white font-mono border-b border-slate-800 pb-2">
+          4. GET APIs (Query Parameters)
+        </h2>
+        <p className="text-xs text-slate-300 font-mono leading-relaxed">
+          GET requests accept URL query parameters. Required parameters must be URL-encoded:
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
-          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/40">
-            <div className="text-slate-500">X-RateLimit-Limit</div>
-            <div className="text-white font-bold text-sm mt-1">100</div>
+        <div className="space-y-2 text-xs font-mono">
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/30 flex items-center justify-between">
+            <div>
+              <span className="text-emerald-400 font-bold">GET /api/v1/vibe</span>
+              <p className="text-slate-500 text-[11px]">Zero inputs required.</p>
+            </div>
+            <Link to="/apis/vibe" className="text-emerald-400 hover:underline">Reference</Link>
           </div>
-          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/40">
-            <div className="text-slate-500">X-RateLimit-Remaining</div>
-            <div className="text-emerald-400 font-bold text-sm mt-1">0 - 100</div>
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/30 flex items-center justify-between">
+            <div>
+              <span className="text-emerald-400 font-bold">GET /api/v1/motivation</span>
+              <p className="text-slate-500 text-[11px]">Zero inputs required.</p>
+            </div>
+            <Link to="/apis/motivation" className="text-emerald-400 hover:underline">Reference</Link>
           </div>
-          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/40">
-            <div className="text-slate-500">X-Response-Time</div>
-            <div className="text-cyan-400 font-bold text-sm mt-1">&lt; 2.5ms</div>
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/30 flex items-center justify-between">
+            <div>
+              <span className="text-emerald-400 font-bold">GET /api/v1/necessity?thing=...</span>
+              <p className="text-slate-500 text-[11px]">Requires <code className="text-slate-300">thing</code> string query parameter.</p>
+            </div>
+            <Link to="/apis/necessity" className="text-emerald-400 hover:underline">Reference</Link>
           </div>
         </div>
       </section>
 
-      {/* Error Format */}
+      {/* 5. POST APIs */}
       <section className="space-y-4">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
-          <AlertCircle className="w-5 h-5 text-rose-400" />
-          Error Handling
+        <h2 className="text-lg font-bold text-white font-mono border-b border-slate-800 pb-2">
+          5. POST APIs (JSON Payloads)
         </h2>
-        <p className="text-sm text-slate-300 font-mono">
-          Validation failures, missing parameters, and rate-limit violations return standard HTTP status codes with structured JSON:
+        <p className="text-xs text-slate-300 font-mono leading-relaxed">
+          POST endpoints require a valid <code className="text-slate-200">Content-Type: application/json</code> header and request body:
         </p>
+        <CodeBlock code={postExampleCurl} language="bash" filename="POST Example" />
+      </section>
+
+      {/* 6. Response Format */}
+      <section className="space-y-4">
+        <h2 className="text-lg font-bold text-white font-mono flex items-center gap-2 border-b border-slate-800 pb-2">
+          <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+          6. Response Format
+        </h2>
+        <p className="text-xs text-slate-300 font-mono leading-relaxed">
+          All endpoints return pretty-printed JSON adhering to semantic versioning:
+        </p>
+        <CodeBlock code={successExample} language="json" filename="200 OK Response" />
+      </section>
+
+      {/* 7. Error Handling */}
+      <section className="space-y-4">
+        <h2 className="text-lg font-bold text-white font-mono flex items-center gap-2 border-b border-slate-800 pb-2">
+          <AlertCircle className="w-5 h-5 text-rose-400" />
+          7. Error Handling
+        </h2>
+        <p className="text-xs text-slate-300 font-mono leading-relaxed">
+          Errors return standard HTTP status codes with structured metadata:
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono mb-4">
+          <div className="p-2.5 rounded border border-slate-800 bg-slate-900/40 text-center">
+            <span className="text-amber-400 font-bold block">400</span>
+            <span className="text-slate-500 text-[10px]">Bad Request</span>
+          </div>
+          <div className="p-2.5 rounded border border-slate-800 bg-slate-900/40 text-center">
+            <span className="text-indigo-400 font-bold block">401</span>
+            <span className="text-slate-500 text-[10px]">Unauthorized</span>
+          </div>
+          <div className="p-2.5 rounded border border-slate-800 bg-slate-900/40 text-center">
+            <span className="text-amber-400 font-bold block">429</span>
+            <span className="text-slate-500 text-[10px]">Rate Limit</span>
+          </div>
+          <div className="p-2.5 rounded border border-slate-800 bg-slate-900/40 text-center">
+            <span className="text-rose-400 font-bold block">500</span>
+            <span className="text-slate-500 text-[10px]">Server Error</span>
+          </div>
+        </div>
         <CodeBlock code={errorExample} language="json" filename="400 Bad Request Payload" />
       </section>
 
-      {/* Catalog Directory in Docs */}
-      <section className="space-y-4 pt-4 border-t border-slate-800">
-        <h2 className="text-xl font-bold text-white">Available Endpoints Summary</h2>
-        <div className="divide-y divide-slate-800 rounded-xl border border-slate-800 bg-slate-900/40 overflow-hidden">
-          {API_CATALOG.map((api) => (
-            <div key={api.slug} className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-800/20">
-              <div className="flex items-center gap-3">
-                <EndpointBadge method={api.method} />
-                <div>
-                  <span className="font-mono text-sm text-white font-bold">{api.endpoint}</span>
-                  <p className="text-xs text-slate-400 mt-0.5">{api.description}</p>
-                </div>
-              </div>
-              <Link
-                to={`/apis/${api.slug}`}
-                className="shrink-0 inline-flex items-center gap-1 text-xs font-mono text-emerald-400 hover:text-emerald-300"
-              >
-                <span>Docs</span>
-                <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-          ))}
+      {/* 8. Rate Limiting */}
+      <section className="space-y-4">
+        <h2 className="text-lg font-bold text-white font-mono border-b border-slate-800 pb-2">
+          8. Rate Limiting (100 req/min)
+        </h2>
+        <p className="text-xs text-slate-300 font-mono leading-relaxed">
+          The API gateway enforces a strict in-memory limit of <strong>100 requests per minute per IP address</strong>. Exceeding this quota produces HTTP 429:
+        </p>
+        <div className="space-y-2 text-xs font-mono">
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/40 flex items-center justify-between">
+            <span className="text-slate-400">X-RateLimit-Limit</span>
+            <span className="text-white font-bold">100</span>
+          </div>
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/40 flex items-center justify-between">
+            <span className="text-slate-400">X-RateLimit-Remaining</span>
+            <span className="text-emerald-400 font-bold">Count remaining in current 60s window</span>
+          </div>
+          <div className="p-3 rounded-lg border border-slate-800 bg-slate-900/40 flex items-center justify-between">
+            <span className="text-slate-400">Retry-After</span>
+            <span className="text-amber-400 font-bold">Seconds to wait before making new calls</span>
+          </div>
+        </div>
+        <CodeBlock code={rateLimitError} language="json" filename="429 Rate Limit Payload" />
+      </section>
+
+      {/* 9. Platform Telemetry & Catalog Navigation */}
+      <section className="p-6 rounded-xl border border-slate-800 bg-slate-900/40 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-sm font-bold text-white font-mono">Live Telemetry & Dashboard</h3>
+            <p className="text-xs text-slate-400 font-mono mt-0.5">
+              Inspect live request logs, average latency, and the calculated Global Uselessness score.
+            </p>
+          </div>
+          <Link
+            to="/analytics"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-400 font-mono text-xs font-bold border border-slate-700 transition-colors"
+          >
+            <Activity className="w-3.5 h-3.5" />
+            <span>View Analytics</span>
+          </Link>
         </div>
       </section>
     </div>

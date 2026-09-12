@@ -40,6 +40,7 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-semibold text-white uppercase tracking-wider font-mono mb-3">Platform</h4>
             <ul className="space-y-2 text-xs">
               <li><Link to="/apis" className="hover:text-emerald-400 transition-colors">API Catalog</Link></li>
+              <li><Link to="/playground" className="hover:text-emerald-400 transition-colors">API Playground</Link></li>
               <li><Link to="/docs" className="hover:text-emerald-400 transition-colors">Documentation</Link></li>
               <li><Link to="/analytics" className="hover:text-emerald-400 transition-colors">Live Telemetry</Link></li>
               <li>
