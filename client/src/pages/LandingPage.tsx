@@ -6,6 +6,7 @@ import { EndpointBadge } from '../components/EndpointBadge';
 import { CodeBlock } from '../components/CodeBlock';
 import { MemeTicker } from '../components/MemeTicker';
 import { MemeWall } from '../components/MemeWall';
+import { MemeSticker } from '../components/MemeSticker';
 import { BASE_URL } from '../services/apiClient';
 
 const SUBTITLE_QUOTES = [
@@ -23,9 +24,19 @@ const POSTER_ACCENTS = [
   { border: 'border-blue-400',   num: 'text-blue-400',   shadow: 'shadow-comic-blue',   badge: 'bg-blue-400 text-black' },
   { border: 'border-pink-500',   num: 'text-pink-400',   shadow: 'shadow-comic-pink',   badge: 'bg-pink-500 text-white' },
   { border: 'border-emerald-400',num: 'text-emerald-400',shadow: 'shadow-comic-green',  badge: 'bg-emerald-400 text-black' },
-  { border: 'border-orange-400', num: 'text-orange-400', shadow: 'shadow-comic-yellow', badge: 'bg-orange-400 text-black' },
+  { border: 'border-amber-400',  num: 'text-amber-400',  shadow: 'shadow-comic-yellow', badge: 'bg-amber-400 text-black' },
   { border: 'border-purple-400', num: 'text-purple-400', shadow: 'shadow-comic-blue',   badge: 'bg-purple-500 text-white' },
 ];
+
+// Malayalam actors reacting to each specific useless microservice
+const API_REACTION_STICKERS: Record<string, { src: string; speech: string; rotation: string; speechColor?: string }> = {
+  vibe: { src: '/assets/memes/jagathy-shocked.png', speech: 'CHAOS 99%?!', rotation: 'rotate-[-8deg]', speechColor: 'bg-rose-500 text-white' },
+  motivation: { src: '/assets/memes/lal-laughing.png', speech: 'ENTHINA?!', rotation: 'rotate-[6deg]', speechColor: 'bg-yellow-400 text-black' },
+  necessity: { src: '/assets/memes/innocent-serious.png', speech: 'VENO?!', rotation: 'rotate-[-6deg]', speechColor: 'bg-amber-400 text-black' },
+  decision: { src: '/assets/memes/salimkumar-pointing.png', speech: 'YES OR NO?!', rotation: 'rotate-[8deg]', speechColor: 'bg-blue-400 text-black' },
+  roast: { src: '/assets/memes/mammootty-crying.png', speech: 'DAMAGE!', rotation: 'rotate-[-10deg]', speechColor: 'bg-red-600 text-white' },
+  excuse: { src: '/assets/memes/salimkumar-class.png', speech: 'STAGING POYI!', rotation: 'rotate-[7deg]', speechColor: 'bg-purple-500 text-white' },
+};
 
 export const LandingPage: React.FC = () => {
   const [quoteIndex, setQuoteIndex] = useState(0);
@@ -153,8 +164,34 @@ export const LandingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* KINETIC HEADLINE */}
-        <div className="space-y-0 mb-6">
+        {/* KINETIC HEADLINE WITH FLOATING MEME STICKERS */}
+        <div className="relative space-y-0 mb-6 w-full max-w-4xl mx-auto">
+          {/* Jagathy Shocked Face peeking on left (desktop/tablet) */}
+          <div className="hidden md:block absolute -left-12 top-4 z-20">
+            <MemeSticker
+              src="/assets/memes/jagathy-shocked.png"
+              speech="AYYO?!"
+              speechColor="bg-rose-500 text-white"
+              speechPosition="top-left"
+              rotation="rotate-[-12deg]"
+              size="w-20 lg:w-24"
+              float={true}
+            />
+          </div>
+
+          {/* Salim Kumar Pointing Finger on right, aiming at CTA */}
+          <div className="hidden md:block absolute -right-10 top-8 z-20">
+            <MemeSticker
+              src="/assets/memes/salimkumar-pointing.png"
+              speech="CHEYYEDA!"
+              speechColor="bg-yellow-400 text-black"
+              speechPosition="top-right"
+              rotation="rotate-[10deg]"
+              size="w-24 lg:w-28"
+              pulse={true}
+            />
+          </div>
+
           {/* നരകം */}
           <h1
             className="hero-narakam font-malayalam font-black text-white leading-none tracking-tight"
@@ -198,7 +235,7 @@ export const LandingPage: React.FC = () => {
         </div>
 
         {/* CTA buttons */}
-        <div className="hero-ctas flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full max-w-lg mx-auto">
+        <div className="hero-ctas relative flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full max-w-lg mx-auto">
           <Link
             to="/playground"
             className="btn-meme w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bungee text-sm tracking-wider border-2 border-black shadow-comic"
@@ -214,9 +251,20 @@ export const LandingPage: React.FC = () => {
           </Link>
         </div>
 
-        {/* Hero curl code block */}
-        <div className="hero-code max-w-2xl w-full mx-auto text-left rounded-2xl border-2 border-yellow-400/30 bg-[#090b14] overflow-hidden shadow-comic-yellow">
-          <div className="flex items-center justify-between px-4 py-3 bg-[#121626] border-b border-yellow-400/20 text-xs font-mono text-slate-300">
+        {/* Hero curl code block with Suraj laughing hanging off the corner */}
+        <div className="hero-code relative max-w-2xl w-full mx-auto text-left rounded-2xl border-2 border-yellow-400/30 bg-[#090b14] overflow-visible shadow-comic-yellow">
+          {/* Suraj laughing sticker attached to code block */}
+          <div className="hidden sm:block absolute -top-8 -right-6 z-30 pointer-events-none">
+            <MemeSticker
+              src="/assets/memes/suraj-laughing.png"
+              speech="CURL ADIKKU!"
+              speechColor="bg-yellow-400 text-black"
+              rotation="rotate-[6deg]"
+              size="w-20"
+            />
+          </div>
+
+          <div className="flex items-center justify-between px-4 py-3 bg-[#121626] border-b border-yellow-400/20 text-xs font-mono text-slate-300 rounded-t-2xl">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-red-500 border border-black inline-block" />
               <span className="w-3 h-3 rounded-full bg-yellow-400 border border-black inline-block" />
@@ -338,13 +386,27 @@ export const LandingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {API_CATALOG.map((api, idx) => {
               const accent = POSTER_ACCENTS[idx % POSTER_ACCENTS.length];
+              const reaction = API_REACTION_STICKERS[api.slug];
               return (
                 <div
                   key={api.slug}
-                  className={`api-poster reveal-init stagger-${(idx % 3) + 1} flex flex-col justify-between h-full rounded-2xl border-2 ${accent.border} bg-[#080c1a] p-6 ${accent.shadow} group relative overflow-hidden`}
+                  className={`api-poster reveal-init stagger-${(idx % 3) + 1} flex flex-col justify-between h-full rounded-2xl border-2 ${accent.border} bg-[#080c1a] p-6 ${accent.shadow} group relative overflow-visible`}
                 >
                   {/* Subtle corner accent */}
-                  <div className={`absolute top-0 right-0 w-16 h-16 opacity-10`} style={{ background: `radial-gradient(circle at top right, currentColor, transparent)` }} />
+                  <div className={`absolute top-0 right-0 w-16 h-16 opacity-10 rounded-tr-2xl`} style={{ background: `radial-gradient(circle at top right, currentColor, transparent)` }} />
+
+                  {/* Reaction Sticker reacting to this API */}
+                  {reaction && (
+                    <div className="absolute -top-7 -right-3 pointer-events-none z-30 group-hover:scale-110 group-hover:rotate-0 transition-transform">
+                      <MemeSticker
+                        src={reaction.src}
+                        speech={reaction.speech}
+                        speechColor={reaction.speechColor}
+                        rotation={reaction.rotation}
+                        size="w-16 sm:w-20"
+                      />
+                    </div>
+                  )}
 
                   {/* API Number sticker */}
                   <div className="flex items-center justify-between mb-4">
@@ -404,7 +466,19 @@ export const LandingPage: React.FC = () => {
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 font-mono text-xs border border-blue-500/20 mb-3">
               <span>⚙️ THE UNDERLYING ENGINE</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bungee text-white">Serious Infrastructure</h2>
+            <div className="relative inline-block">
+              <h2 className="text-3xl sm:text-4xl font-bungee text-white">Serious Infrastructure</h2>
+              <div className="hidden sm:block absolute -top-8 -right-16 z-20 pointer-events-none">
+                <MemeSticker
+                  src="/assets/memes/innocent-serious.png"
+                  speech="SUB-1MS VEGAM?!"
+                  speechColor="bg-yellow-400 text-black"
+                  rotation="rotate-[8deg]"
+                  size="w-16 sm:w-20"
+                  float={true}
+                />
+              </div>
+            </div>
             <p className="text-xs sm:text-sm text-slate-400 mt-2 font-mono">
               Every feature you'd expect from a high-availability cloud provider, dedicated purely to Malayali non-problems.
             </p>
@@ -434,12 +508,52 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* ============================================================
-          FINAL CTA — YELLOW WORLD
+          FINAL CTA — YELLOW WORLD & MEME STICKER BOMB
           ============================================================ */}
       <section className="py-16 px-4 sm:px-6">
-        <div className="reveal-scale max-w-5xl mx-auto p-8 sm:p-14 rounded-3xl bg-gradient-to-br from-yellow-400 to-amber-400 text-center space-y-6 shadow-comic border-2 border-black relative overflow-hidden">
+        <div className="reveal-scale max-w-5xl mx-auto p-8 sm:p-14 rounded-3xl bg-gradient-to-br from-yellow-400 to-amber-400 text-center space-y-6 shadow-comic border-2 border-black relative overflow-visible">
+          {/* 4 Corner Reaction Stickers */}
+          <div className="hidden sm:block absolute -top-8 -left-6 z-20 pointer-events-none">
+            <MemeSticker
+              src="/assets/memes/salimkumar-pointing.png"
+              speech="AVANMARU IPPO VARUM!"
+              speechColor="bg-black text-yellow-400"
+              rotation="rotate-[-12deg]"
+              size="w-24"
+              float={true}
+            />
+          </div>
+          <div className="hidden sm:block absolute -top-8 -right-6 z-20 pointer-events-none">
+            <MemeSticker
+              src="/assets/memes/suraj-laughing.png"
+              speech="PANI SURE!"
+              speechColor="bg-red-600 text-white"
+              rotation="rotate-[12deg]"
+              size="w-24"
+              float={true}
+            />
+          </div>
+          <div className="hidden md:block absolute -bottom-6 -left-6 z-20 pointer-events-none">
+            <MemeSticker
+              src="/assets/memes/mammootty-crying.png"
+              speech="DEPLOY AAYI!"
+              speechColor="bg-black text-white"
+              rotation="rotate-[8deg]"
+              size="w-20"
+            />
+          </div>
+          <div className="hidden md:block absolute -bottom-6 -right-6 z-20 pointer-events-none">
+            <MemeSticker
+              src="/assets/memes/mukesh-laugh.png"
+              speech="SCENE ILLA!"
+              speechColor="bg-emerald-400 text-black"
+              rotation="rotate-[-8deg]"
+              size="w-20"
+            />
+          </div>
+
           {/* Decorative PANI text in background */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden rounded-3xl">
             <span className="font-bungee text-[18vw] text-black/5 leading-none">PANI</span>
           </div>
           <div className="relative z-10">

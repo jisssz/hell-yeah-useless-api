@@ -9,6 +9,7 @@ import { Button } from '../components/Button';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
 import { EndpointBadge } from '../components/EndpointBadge';
+import { MemeSticker } from '../components/MemeSticker';
 
 // Distinct color mapping for endpoints in distribution charts
 const ENDPOINT_COLORS: Record<string, { bar: string; text: string }> = {
@@ -145,7 +146,17 @@ export const AnalyticsPage: React.FC = () => {
           {/* Key Metric Cards */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {/* Total Requests */}
-            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
+            <div className="relative p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm overflow-visible">
+              <div className="hidden sm:block absolute -top-5 -right-3 pointer-events-none z-20">
+                <MemeSticker
+                  src="/assets/memes/jagathy-shocked.png"
+                  speech="ITHRA PANI?!"
+                  speechColor="bg-rose-500 text-white"
+                  rotation="rotate-[-10deg]"
+                  size="w-14 sm:w-16"
+                  float={true}
+                />
+              </div>
               <div className="flex items-center justify-between text-slate-400 mb-2">
                 <span className="text-[11px] font-mono uppercase tracking-wider font-bold">TOTAL PANI</span>
                 <Activity className="w-4 h-4 text-[#38ef7d]" />
@@ -169,7 +180,16 @@ export const AnalyticsPage: React.FC = () => {
             </div>
 
             {/* Average Latency */}
-            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
+            <div className="relative p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm overflow-visible">
+              <div className="hidden sm:block absolute -top-5 -right-3 pointer-events-none z-20">
+                <MemeSticker
+                  src="/assets/memes/innocent-serious.png"
+                  speech="0.4MS?!"
+                  speechColor="bg-cyan-400 text-black"
+                  rotation="rotate-[6deg]"
+                  size="w-14 sm:w-16"
+                />
+              </div>
               <div className="flex items-center justify-between text-slate-400 mb-2">
                 <span className="text-[11px] font-mono uppercase tracking-wider font-bold">VEGAM (LATENCY)</span>
                 <Cpu className="w-4 h-4 text-cyan-400" />
@@ -310,7 +330,18 @@ export const AnalyticsPage: React.FC = () => {
           </div>
 
           {/* 3. Live Request Stream Table */}
-          <div className="rounded-xl border border-slate-800 bg-slate-900/40 overflow-hidden">
+          <div className="relative rounded-xl border border-slate-800 bg-slate-900/40 overflow-visible">
+            {/* Salim Kumar pointing sticker */}
+            <div className="hidden sm:block absolute -top-8 right-6 pointer-events-none z-20">
+              <MemeSticker
+                src="/assets/memes/salimkumar-pointing.png"
+                speech="LIVE AUDIT!"
+                speechColor="bg-yellow-400 text-black"
+                rotation="rotate-[8deg]"
+                size="w-16 sm:w-20"
+                float={true}
+              />
+            </div>
             <div className="p-5 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
                 <h3 className="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">

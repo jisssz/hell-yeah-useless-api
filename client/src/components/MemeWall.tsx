@@ -1,13 +1,25 @@
 import React from 'react';
 import { MemeCard } from './MemeCard';
+import { MemeSticker } from './MemeSticker';
 
 export const MemeWall: React.FC = () => {
   return (
     <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Section Header */}
-      <div className="reveal-init text-center max-w-3xl mx-auto mb-14 space-y-3">
+      <div className="reveal-init relative text-center max-w-3xl mx-auto mb-14 space-y-3">
+        {/* Innocent peeking sticker on header */}
+        <div className="hidden sm:block absolute -top-8 -left-8 pointer-events-none z-20">
+          <MemeSticker
+            src="/assets/memes/innocent-serious.png"
+            speech="ITHU VENAMAYIRUNNO?"
+            speechColor="bg-yellow-400 text-black"
+            rotation="rotate-[-10deg]"
+            size="w-16 sm:w-20"
+            float={true}
+          />
+        </div>
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400 text-black font-bungee text-xs tracking-wider shadow-comic sticker sticker-3">
-          <span>😂 MALAYALAM DEV MEME ARCHIVE</span>
+          <span>🔥 MALAYALAM DEV MEME ARCHIVE</span>
         </div>
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bungee text-white tracking-tight">
           The Hall of <span className="text-yellow-400">Absolute Pani</span>
@@ -92,8 +104,19 @@ export const MemeWall: React.FC = () => {
         />
       </div>
 
-      {/* Bottom Status Banner */}
-      <div className="reveal-init mt-12 p-6 rounded-2xl bg-[#0e1222] border-2 border-yellow-400/40 flex flex-wrap items-center justify-between gap-4 shadow-comic-yellow">
+      {/* Bottom Status Banner with Mukesh Sticker */}
+      <div className="reveal-init relative mt-12 p-6 rounded-2xl bg-[#0e1222] border-2 border-yellow-400/40 flex flex-wrap items-center justify-between gap-4 shadow-comic-yellow overflow-visible">
+        {/* Mukesh laughing sticker */}
+        <div className="hidden sm:block absolute -top-8 right-8 pointer-events-none z-20">
+          <MemeSticker
+            src="/assets/memes/mukesh-laugh.png"
+            speech="SCENE ILLA BRO!"
+            speechColor="bg-yellow-400 text-black"
+            rotation="rotate-[6deg]"
+            size="w-16 sm:w-20"
+            float={true}
+          />
+        </div>
         <div className="flex items-center gap-3">
           <span className="text-3xl animate-float-y">🔥</span>
           <div>

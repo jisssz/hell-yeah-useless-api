@@ -36,6 +36,8 @@
 .shadow-comic-blue   { box-shadow: 5px 5px 0px 0px #0066ff; }
 .shadow-comic-pink   { box-shadow: 5px 5px 0px 0px #ff3366; }
 .shadow-comic-green  { box-shadow: 5px 5px 0px 0px #38ef7d; }
+.drop-shadow-comic-deep { filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.95)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5)); }
+
 
 /* ============================================================
    LOADING INTRO SCREEN

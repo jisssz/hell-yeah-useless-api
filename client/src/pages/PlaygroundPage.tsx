@@ -11,6 +11,7 @@ import { RequestBuilder } from '../components/playground/RequestBuilder';
 import { ResponseViewer } from '../components/playground/ResponseViewer';
 import { CurlBlock } from '../components/playground/CurlBlock';
 import { RequestHistory, HistoryItem } from '../components/playground/RequestHistory';
+import { MemeSticker } from '../components/MemeSticker';
 
 const STORAGE_KEY = 'useless_api_request_history';
 
@@ -199,7 +200,17 @@ export const PlaygroundPage: React.FC = () => {
           />
 
           {/* 2. Request Builder */}
-          <div className="p-5 rounded-xl border border-slate-800 bg-slate-900/30">
+          <div className="relative p-5 rounded-xl border border-slate-800 bg-slate-900/30">
+            {/* Salim Kumar pointing sticker */}
+            <div className="hidden sm:block absolute -top-8 -right-4 z-20 pointer-events-none">
+              <MemeSticker
+                src="/assets/memes/salimkumar-pointing.png"
+                speech="REQUEST AYYIKO!"
+                speechColor="bg-yellow-400 text-black"
+                rotation="rotate-[6deg]"
+                size="w-16 sm:w-20"
+              />
+            </div>
             <RequestBuilder
               api={selectedApi}
               queryParams={queryParams}
@@ -226,7 +237,18 @@ export const PlaygroundPage: React.FC = () => {
         </div>
 
         {/* Right Column: Live Response & History (7 cols on lg) */}
-        <div className="lg:col-span-6 space-y-6">
+        <div className="lg:col-span-6 space-y-6 relative">
+          {/* Jagathy watching response */}
+          <div className="hidden sm:block absolute -top-10 right-2 z-20 pointer-events-none">
+            <MemeSticker
+              src="/assets/memes/jagathy-shocked.png"
+              speech="LIVE JSON?!"
+              speechColor="bg-emerald-400 text-black"
+              rotation="rotate-[-6deg]"
+              size="w-16 sm:w-20"
+              float={true}
+            />
+          </div>
           <div className="flex items-center justify-between">
             <label className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
               <Terminal className="w-3.5 h-3.5 text-emerald-400" />
