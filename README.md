@@ -17,9 +17,9 @@
 ### Team Name: HELL YEAH
 
 ### Team Members
-- Team Lead: Jiss Hajan - [College / Institution] <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Update college name -->
-- Member 2: [Name] - [College] <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Add teammate name & college if applicable -->
-- Member 3: [Name] - [College] <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Add teammate name & college if applicable -->
+- Team Lead: Jiss Hajan - [ADD COLLEGE NAME] <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Replace [ADD COLLEGE NAME] with your institution -->
+- Member 2: [ADD TEAM MEMBER 2 NAME] - [ADD COLLEGE NAME] <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Add teammate name & college if applicable -->
+- Member 3: [ADD TEAM MEMBER 3 NAME] - [ADD COLLEGE NAME] <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Add teammate name & college if applicable -->
 
 ### Project Description
 USELESS API is enterprise-grade cloud API infrastructure engineered to solve problems that fundamentally do not exist. Styled like Stripe, Supabase, and Cloudflare, it pairs serious developer experience—an interactive playground, real-time telemetry ring buffer, and live analytics—with satirical, mathematically absurd utility endpoints.
@@ -38,9 +38,11 @@ USELESS API delivers six hyper-engineered, low-latency microservices with zero e
 1. **Decision Engine (`POST /api/v1/decision`)**: Deterministic decision-making with overengineered justification algorithms.
 2. **Vibe Check (`GET /api/v1/vibe`)**: Astrological and developer energy diagnostics with chaos indices.
 3. **Existential Motivation (`GET /api/v1/motivation`)**: Unhelpful, candid productivity wisdom.
-4. **Meeting Necessity Oracle (`GET /api/v1/necessity`)**: Scientific calculation of whether a meeting should be cancelled.
+4. **Meeting Necessity Oracle (`GET /api/v1/necessity`)**: Scientific calculation of whether a project or meeting is superfluous.
 5. **Tech Stack Roaster (`POST /api/v1/roast`)**: Brutal, algorithmic architectural critiques.
 6. **Enterprise Excuse Generator (`POST /api/v1/excuse`)**: Plausible corporate and technical scapegoats.
+
+Targeting TinkerHub's *"Most Over-Engineered Solution to a Non-Problem"* side quest, USELESS API combines high-seriousness developer infrastructure with entirely absurd utilities.
 
 ---
 
@@ -50,11 +52,23 @@ For Software:
 - **Languages used**: TypeScript (ES2022) for strict end-to-end type safety across client and server.
 - **Frameworks used**: Express.js (backend HTTP REST gateway), React 18 with Vite (frontend client).
 - **Libraries used**: Tailwind CSS (dark developer UI), Lucide React (feather-style developer icons), React Router v6 (client-side routing).
-- **Tools used**: `tsx` (TypeScript Node runtime), Git, npm, Vercel SPA routing (`vercel.json`).
-- **Data & State**: 100% in-memory telemetry ring buffer (sliding window of 200 requests), per-IP rate-limiting bucket (100 req/min), simulated API key tiering (`enterprise`, `pro`, `hobbyist`, `guest`), zero external database or Redis required.
+- **Tools used**: `tsx` (TypeScript Node runtime), Git, npm, Vercel SPA routing (`vercel.json`), Render cloud deployment (`render.yaml`).
+- **Data & State**: 100% in-memory telemetry ring buffer (sliding window of 200 requests, resets on process restart), per-IP rate-limiting bucket (100 req/min), simulated API key tiering (`enterprise`, `pro`, `hobbyist`, `guest`), zero external database or Redis required.
 
 For Hardware:
 - *N/A (Pure Software / Web & Cloud API Gateway)*
+
+---
+
+## Features
+- **6 Intentionally Useless Microservices**: Real GET and POST endpoints returning structured JSON.
+- **Interactive API Playground**: In-browser client to parameterize, execute requests, and inspect headers/payloads.
+- **Dynamic cURL Generator**: One-click executable cURL commands reflecting the active target base URL and parameters.
+- **Live Telemetry Ring Buffer**: In-memory sliding log buffer recording latency, status codes, methods, and IP addresses.
+- **Real-Time Analytics Dashboard**: Visual distribution charts and auto-refreshing live telemetry stream (polled every 5s).
+- **Rate Limiting & Tiers**: In-memory rate-limiter (100 req/min) and simulated API key authentication (`X-API-Key`).
+- **Zero Database Complexity**: Self-contained architecture with zero external database, Redis, or cloud cache overhead.
+- **Cloud Hosted**: Continuous deployment with React SPA routing on Vercel and Node API gateway on Render.
 
 ---
 
@@ -62,36 +76,47 @@ For Hardware:
 ### Architecture Overview
 ```mermaid
 flowchart TD
-    Client["Browser / Developer Client (Vite + React 18)"]
-    Gateway["Express.js API Gateway (Node.js + TypeScript)"]
-    Telemetry["In-Memory Telemetry Ring Buffer (200 Logs)"]
-    RateLimiter["In-Memory Rate Limiter (100 req/min)"]
-    KeyAuth["API Key Simulator (Tier Engine)"]
+    User["Developer / User"]
+    Client["Vercel React Frontend (React 18 + Vite)"]
+    Gateway["Render API Gateway (Node.js + Express + TypeScript)"]
     
-    subgraph "Core Microservices"
-        Vibe["/api/v1/vibe"]
-        Motivation["/api/v1/motivation"]
-        Necessity["/api/v1/necessity"]
-        Decision["/api/v1/decision"]
-        Roast["/api/v1/roast"]
-        Excuse["/api/v1/excuse"]
-        Analytics["/api/v1/analytics/overview"]
+    subgraph "Gateway Pipeline & Middleware"
+        CORS["CORS Handler"]
+        Auth["Simulated API Key Tiering"]
+        Limiter["In-Memory Rate Limiter (100 req/min)"]
+        Telemetry["Telemetry Tracker (process.hrtime)"]
+        Validator["Request Validation & JSON Error Handler"]
     end
 
-    Client -->|HTTP Requests| Gateway
-    Gateway --> Telemetry
-    Gateway --> KeyAuth
-    Gateway --> RateLimiter
+    subgraph "Core Microservices"
+        Vibe["GET /api/v1/vibe"]
+        Motivation["GET /api/v1/motivation"]
+        Necessity["GET /api/v1/necessity"]
+        Decision["POST /api/v1/decision"]
+        Roast["POST /api/v1/roast"]
+        Excuse["POST /api/v1/excuse"]
+        Health["GET /health"]
+    end
+
+    subgraph "In-Memory State (Non-Persistent)"
+        RingBuffer["200-Request Rolling Ring Buffer"]
+        Analytics["GET /api/v1/analytics/overview"]
+    end
+
+    User -->|Browser Navigation| Client
+    Client -->|HTTPS REST Calls| Gateway
+    Gateway --> CORS --> Auth --> Limiter --> Telemetry --> Validator
     
-    RateLimiter --> Vibe
-    RateLimiter --> Motivation
-    RateLimiter --> Necessity
-    RateLimiter --> Decision
-    RateLimiter --> Roast
-    RateLimiter --> Excuse
-    RateLimiter --> Analytics
+    Validator --> Vibe
+    Validator --> Motivation
+    Validator --> Necessity
+    Validator --> Decision
+    Validator --> Roast
+    Validator --> Excuse
+    Validator --> Health
     
-    Telemetry -.->|Real-time Metrics| Analytics
+    Telemetry -.->|Capture Metrics| RingBuffer
+    RingBuffer -.-> Analytics
     Analytics -.->|Poll every 5s| Client
 ```
 
@@ -150,6 +175,7 @@ All endpoints return standard JSON responses with telemetry headers: `X-Request-
 | `POST` | `/api/v1/roast` | Architectural & code roast | `{"text": "I will finish my project tonight."}` |
 | `POST` | `/api/v1/excuse` | Corporate & engineering scapegoats | `{"situation": "broke production staging"}` |
 | `GET` | `/api/v1/analytics/overview` | Global telemetry metrics & live logs | *None* |
+| `GET` | `/health` | Service health status | *None* |
 
 ---
 
@@ -181,21 +207,23 @@ For Hardware:
 
 ## Project Demo
 ### Video
-[Demo Video Link](https://youtu.be/placeholder)
+[ADD DEMO VIDEO LINK]
 *A 2-minute walkthrough of the USELESS API developer portal, live API Playground, cURL integration, and real-time telemetry streaming.*
-<!-- 🧑‍💻 HUMAN ACTION REQUIRED: Replace with your actual video link (YouTube/Loom) -->
+<!-- 🧑‍💻 HUMAN ACTION REQUIRED: Replace [ADD DEMO VIDEO LINK] with your actual video link (YouTube/Loom) -->
 
-### Additional Demos
-- **GitHub Repository**: [https://github.com/jisssz/hell-yeah-useless-api](https://github.com/jisssz/hell-yeah-useless-api)
+### Additional Demos & Live Links
+- **Production Frontend**: [https://hell-yeah-useless-api.vercel.app](https://hell-yeah-useless-api.vercel.app)
+- **Production API Playground**: [https://hell-yeah-useless-api.vercel.app/playground](https://hell-yeah-useless-api.vercel.app/playground)
+- **Production Analytics Dashboard**: [https://hell-yeah-useless-api.vercel.app/analytics](https://hell-yeah-useless-api.vercel.app/analytics)
 - **Production Backend URL**: [https://hell-yeah-useless-api.onrender.com](https://hell-yeah-useless-api.onrender.com)
 - **Live Gateway Health**: [https://hell-yeah-useless-api.onrender.com/health](https://hell-yeah-useless-api.onrender.com/health)
 - **Live Telemetry Stream**: [https://hell-yeah-useless-api.onrender.com/api/v1/analytics/overview](https://hell-yeah-useless-api.onrender.com/api/v1/analytics/overview)
-- **Local API Playground**: `http://localhost:5173/playground`
+- **GitHub Repository**: [https://github.com/jisssz/hell-yeah-useless-api](https://github.com/jisssz/hell-yeah-useless-api)
 
 ---
 
 ## Team Contributions
-- **Jiss Hajan**: Architecture, Backend Express gateway, API design, telemetry ring buffer, React frontend, Interactive Playground, and documentation.
+- **Jiss Hajan**: Full-stack architecture, Express API gateway, TypeScript implementation, React frontend, Interactive Playground, telemetry ring buffer, and documentation.
 <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Update team roles and contributions if collaborating with teammates -->
 
 ---
