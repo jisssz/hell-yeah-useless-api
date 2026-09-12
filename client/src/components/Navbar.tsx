@@ -37,8 +37,12 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black flex items-center justify-center text-xl shadow-comic group-hover:rotate-6 group-hover:scale-110 transition-transform duration-200">
-            <span>😂</span>
+          <div className="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black overflow-hidden flex items-center justify-center shadow-comic group-hover:rotate-6 group-hover:scale-110 transition-transform duration-200 shrink-0">
+            <img
+              src="/assets/narakam-logo.png"
+              alt="നരകം EVIDEHHHH ? Logo"
+              className="w-full h-full object-cover object-top"
+            />
           </div>
           <div>
             <div className="flex items-center gap-2">

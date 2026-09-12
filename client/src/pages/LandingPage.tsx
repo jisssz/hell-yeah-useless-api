@@ -134,9 +134,23 @@ export const LandingPage: React.FC = () => {
         </div>
 
         {/* Badge — no sticker wobble on hero, just entrance */}
-        <div className="hero-narakam inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400 text-black font-bungee text-xs tracking-wider shadow-comic mb-8 border-2 border-black">
+        <div className="hero-narakam inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400 text-black font-bungee text-xs tracking-wider shadow-comic mb-6 border-2 border-black">
           <Flame className="w-4 h-4 text-red-600" />
           <span>OFFICIAL MALAYALAM MEME INFRASTRUCTURE • v1.0 LIVE</span>
+        </div>
+
+        {/* Hero Meme Avatar Mascot Sticker */}
+        <div className="hero-narakam mb-5 relative inline-block">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-3xl bg-yellow-400 border-4 border-black p-1 shadow-comic rotate-[-4deg] hover:rotate-[2deg] hover:scale-105 transition-all duration-300 overflow-hidden mx-auto">
+            <img
+              src="/assets/narakam-logo.png"
+              alt="നരകം EVIDEHHHH ? Mascot"
+              className="w-full h-full object-cover object-top rounded-2xl"
+            />
+          </div>
+          <div className="absolute -bottom-2 -right-2 px-2.5 py-0.5 rounded-full bg-red-600 text-white font-bungee text-[10px] border-2 border-black shadow-comic-sm">
+            EVIDEHH?!
+          </div>
         </div>
 
         {/* KINETIC HEADLINE */}

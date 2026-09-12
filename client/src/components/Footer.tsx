@@ -22,8 +22,12 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-yellow-400 border-2 border-black flex items-center justify-center text-xl shadow-comic">
-                😂
+              <div className="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black overflow-hidden flex items-center justify-center shadow-comic shrink-0">
+                <img
+                  src="/assets/narakam-logo.png"
+                  alt="നരകം EVIDEHHHH ?"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">

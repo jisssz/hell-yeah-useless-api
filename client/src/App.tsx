@@ -23,6 +23,17 @@ const LoadingScreen: React.FC<{ onDone: () => void }> = ({ onDone }) => {
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-blue-600/5 blob-drift-2 pointer-events-none" />
 
       <div className="relative text-center select-none">
+        {/* Mascot Avatar */}
+        <div className="loader-word-1 mb-4 flex justify-center">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-yellow-400 border-4 border-black p-1 shadow-comic rotate-[-4deg] overflow-hidden">
+            <img
+              src="/assets/narakam-logo.png"
+              alt="നരകം EVIDEHHHH ?"
+              className="w-full h-full object-cover object-top rounded-xl"
+            />
+          </div>
+        </div>
+
         {/* നരകം */}
         <div className="loader-word-1 font-malayalam font-black text-5xl sm:text-7xl text-white tracking-tight leading-none">
           നരകം
