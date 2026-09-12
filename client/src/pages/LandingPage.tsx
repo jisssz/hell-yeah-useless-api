@@ -116,7 +116,12 @@ export const LandingPage: React.FC = () => {
         {/* Terminal grid overlay */}
         <div className="absolute inset-0 terminal-grid opacity-30 pointer-events-none" />
 
-        {/* Decorative ambient orbs — stronger opacity */}
+        {/* Rich atmospheric radial halos behind headline */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[350px] bg-yellow-400/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/4 w-[450px] h-[300px] bg-purple-600/15 rounded-full blur-[110px] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 w-[400px] h-[300px] bg-cyan-500/12 rounded-full blur-[110px] pointer-events-none" />
+
+        {/* Decorative ambient orbs */}
         <div className="absolute top-10 left-[-5%] w-72 h-72 rounded-full blur-3xl blob-drift pointer-events-none" style={{ background: 'rgba(255,228,20,0.15)' }} />
         <div className="absolute bottom-10 right-[-5%] w-96 h-96 rounded-full blur-3xl blob-drift-2 pointer-events-none" style={{ background: 'rgba(0,102,255,0.15)' }} />
         <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full blur-2xl blob-drift-3 pointer-events-none" style={{ background: 'rgba(236,72,153,0.08)' }} />
@@ -238,21 +243,21 @@ export const LandingPage: React.FC = () => {
         <div className="hero-ctas relative flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full max-w-lg mx-auto">
           <Link
             to="/playground"
-            className="btn-meme w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bungee text-sm tracking-wider border-2 border-black shadow-comic"
+            className="btn-meme w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bungee text-sm tracking-wider border-2 border-black shadow-comic transition-all hover:scale-105 active:scale-95"
           >
             <span>🔥 PANI THUDAKKAM</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             to="/apis"
-            className="btn-meme w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-[#0f1424] hover:bg-slate-800 text-white font-bungee text-sm tracking-wider border-2 border-blue-500/40 shadow-comic-blue"
+            className="btn-meme w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-[#0f1424] hover:bg-slate-800 text-white font-bungee text-sm tracking-wider border-2 border-blue-500/40 shadow-comic-blue transition-all hover:scale-105 active:scale-95"
           >
             <span>BROWSE 6 USELESS APIs</span>
           </Link>
         </div>
 
         {/* Hero curl code block with Suraj laughing hanging off the corner */}
-        <div className="hero-code relative max-w-2xl w-full mx-auto text-left rounded-2xl border-2 border-yellow-400/30 bg-[#090b14] overflow-visible shadow-comic-yellow">
+        <div className="hero-code card-glow-yellow relative max-w-2xl w-full mx-auto text-left rounded-2xl border-2 border-yellow-400/50 bg-[#060913]/95 overflow-visible shadow-comic-yellow">
           {/* Suraj laughing sticker attached to code block */}
           <div className="hidden sm:block absolute -top-8 -right-6 z-30 pointer-events-none">
             <MemeSticker
@@ -264,9 +269,9 @@ export const LandingPage: React.FC = () => {
             />
           </div>
 
-          <div className="flex items-center justify-between px-4 py-3 bg-[#121626] border-b border-yellow-400/20 text-xs font-mono text-slate-300 rounded-t-2xl">
+          <div className="flex items-center justify-between px-4 py-3 bg-[#0c1020] border-b border-yellow-400/20 text-xs font-mono text-slate-300 rounded-t-2xl">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-red-500 border border-black inline-block" />
+              <span className="w-3 h-3 rounded-full bg-rose-500 border border-black inline-block" />
               <span className="w-3 h-3 rounded-full bg-yellow-400 border border-black inline-block" />
               <span className="w-3 h-3 rounded-full bg-emerald-500 border border-black inline-block" />
               <span className="ml-2 font-bold font-bungee text-[11px] text-yellow-300">curl — നരകം Gateway</span>
@@ -320,18 +325,19 @@ export const LandingPage: React.FC = () => {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
         <div className="reveal-init grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {[
-            { val: '99.8%', label: 'Pointless SLA', sub: '0.2% accidental utility', color: 'text-yellow-400' },
-            { val: '6',     label: 'Absurd Microservices', sub: '100% Express + TS Gateway', color: 'text-blue-400' },
-            { val: '0',     label: 'Problems Solved', sub: 'Engineered to solve nothing', color: 'text-red-500' },
-            { val: '<1ms',  label: 'Gateway Latency', sub: 'Enthina ithra vegam?', color: 'text-emerald-400' },
+            { val: '99.8%', label: 'Pointless SLA', sub: '0.2% accidental utility', color: 'text-yellow-400', glow: 'card-glow-yellow' },
+            { val: '6',     label: 'Absurd Microservices', sub: '100% Express + TS Gateway', color: 'text-cyan-400', glow: 'card-glow-cyan' },
+            { val: '0',     label: 'Problems Solved', sub: 'Engineered to solve nothing', color: 'text-rose-400', glow: 'card-glow-pink' },
+            { val: '<1ms',  label: 'Gateway Latency', sub: 'Enthina ithra vegam?', color: 'text-emerald-400', glow: 'card-glow-emerald' },
           ].map((m, i) => (
             <div
               key={m.label}
-              className={`reveal-scale stagger-${i + 1} p-6 rounded-2xl bg-[#0f1424] border-2 border-black shadow-comic text-center space-y-1 hover:border-yellow-400/60 transition-colors`}
+              className={`reveal-scale stagger-${i + 1} ${m.glow} p-6 rounded-2xl bg-[#080d1a] border-2 border-black relative overflow-hidden text-center space-y-1 hover:scale-105 transition-all duration-300 shadow-comic-sm`}
             >
-              <div className={`text-3xl sm:text-4xl font-bungee ${m.color}`}>{m.val}</div>
-              <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">{m.label}</div>
-              <p className={`text-[10px] font-mono ${m.color}/70`}>{m.sub}</p>
+              <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-white/30 to-transparent absolute top-0 left-0" />
+              <div className={`text-3xl sm:text-4xl font-bungee ${m.color} drop-shadow-[0_0_12px_currentColor]`}>{m.val}</div>
+              <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">{m.label}</div>
+              <p className={`text-[10px] font-mono ${m.color}/80 font-semibold`}>{m.sub}</p>
             </div>
           ))}
         </div>
@@ -488,15 +494,16 @@ export const LandingPage: React.FC = () => {
             {credibilityFeatures.map((feat, i) => (
               <div
                 key={feat.title}
-                className={`reveal-init stagger-${i + 1} p-5 rounded-2xl border-2 border-black bg-[#0d101c] hover:border-slate-600 transition-colors space-y-2.5 font-mono shadow-comic`}
+                className={`reveal-init stagger-${i + 1} glass-panel-interactive p-5 rounded-2xl relative overflow-hidden space-y-3 font-mono transition-all duration-300 hover:-translate-y-1`}
               >
+                <div className="h-0.5 w-full bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-transparent absolute top-0 left-0" />
                 <div className="flex items-center justify-between">
-                  <div className="p-2.5 rounded-xl bg-black border border-slate-700">
+                  <div className="p-2.5 rounded-xl bg-black/60 border border-white/10 shadow-inner">
                     {feat.icon}
                   </div>
                   <div className="text-right">
-                    <span className="text-xs font-black text-yellow-400 block">{feat.value}</span>
-                    <span className="text-[10px] text-slate-500 font-semibold">{feat.malayalamBadge}</span>
+                    <span className="text-xs font-black text-yellow-400 block drop-shadow-[0_0_8px_rgba(255,232,20,0.3)]">{feat.value}</span>
+                    <span className="text-[10px] text-slate-400 font-semibold">{feat.malayalamBadge}</span>
                   </div>
                 </div>
                 <h3 className="text-sm font-bold text-white font-sans">{feat.title}</h3>

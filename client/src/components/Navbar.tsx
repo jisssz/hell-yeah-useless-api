@@ -21,23 +21,26 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b-2 border-black bg-[#060810]/95 backdrop-blur-md">
-      {/* Top Electric Blue Sub-Bar */}
-      <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white text-[11px] font-mono font-bold py-1 px-4 flex items-center justify-between border-b border-blue-400/30">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#060810]/85 backdrop-blur-xl shadow-xl shadow-black/60">
+      {/* Top Electric Sub-Bar */}
+      <div className="bg-gradient-to-r from-purple-700 via-indigo-600 to-blue-600 text-white text-[11px] font-mono font-bold py-1 px-4 flex items-center justify-between border-b border-purple-400/30 shadow-sm">
         <div className="flex items-center gap-2">
           <span className="animate-bounce">🔥</span>
           <span className="tracking-wide">TINKERHUB USELESS PROJECTS 3.0 • നരകം EVIDEHHHH ? OFFICIAL DEVELOPER SUFFERING PORTAL</span>
         </div>
         <div className="hidden sm:flex items-center gap-3 text-[10px]">
-          <span className="bg-black/30 px-2 py-0.5 rounded text-yellow-300">SLA: 99.8% POINTLESS</span>
-          <span>● SCENE ILLA BRO</span>
+          <span className="bg-black/40 px-2 py-0.5 rounded text-yellow-300 border border-yellow-400/30">SLA: 99.8% POINTLESS</span>
+          <span className="text-emerald-300 flex items-center gap-1 font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            SCENE ILLA BRO
+          </span>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black overflow-hidden flex items-center justify-center shadow-comic group-hover:rotate-6 group-hover:scale-110 transition-transform duration-200 shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black overflow-hidden flex items-center justify-center shadow-comic group-hover:rotate-6 group-hover:scale-110 transition-transform duration-200 shrink-0 ring-2 ring-yellow-400/30">
             <img
               src="/assets/narakam-logo.png"
               alt="നരകം EVIDEHHHH ? Logo"
@@ -49,7 +52,7 @@ export const Navbar: React.FC = () => {
               <span className="font-malayalam font-black text-base sm:text-lg text-white group-hover:text-yellow-400 transition-colors leading-none">
                 നരകം
               </span>
-              <span className="font-bungee text-sm sm:text-base tracking-wider text-yellow-400 group-hover:text-white transition-colors">
+              <span className="font-bungee text-sm sm:text-base tracking-wider text-yellow-400 group-hover:text-white transition-colors drop-shadow-[0_0_12px_rgba(250,204,21,0.3)]">
                 EVIDEHHHH ?
               </span>
               <span className="hidden sm:inline-block text-[9px] font-bungee px-2 py-0.5 rounded bg-yellow-400 text-black border border-black shadow-comic">
@@ -70,10 +73,10 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all ${
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl transition-all ${
                   active
-                    ? 'bg-yellow-400 text-black border-2 border-black shadow-comic font-black'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
+                    ? 'bg-yellow-400 text-black border-2 border-black shadow-comic font-black scale-105'
+                    : 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
                 }`}
               >
                 {link.icon}
@@ -85,13 +88,13 @@ export const Navbar: React.FC = () => {
 
         {/* Right Actions */}
         <div className="hidden md:flex items-center gap-3">
-          <div className="flex items-center gap-2 text-[11px] font-mono font-bold text-slate-300 px-3 py-1 rounded-full bg-slate-900 border border-slate-700">
+          <div className="flex items-center gap-2 text-[11px] font-mono font-bold text-emerald-300 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/40 shadow-sm shadow-emerald-500/20">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span>ONLINE</span>
+            <span>GATEWAY ONLINE</span>
           </div>
           <Link
             to="/playground"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-black font-bungee text-xs tracking-wider border-2 border-black transition-all shadow-comic hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-black font-bungee text-xs tracking-wider border-2 border-black transition-all shadow-comic hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
           >
             <span>TRY PANI</span>
             <ArrowRight className="w-3.5 h-3.5" />

@@ -70,7 +70,11 @@ export const AnalyticsPage: React.FC = () => {
   }, [data]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+      {/* Ambient background glow */}
+      <div className="absolute top-10 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-28 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
+
       <PageHeader
         badge={
           <div className="flex items-center gap-2">
@@ -87,7 +91,7 @@ export const AnalyticsPage: React.FC = () => {
         actions={
           <div className="flex items-center gap-3">
             {lastRefreshed && (
-              <span className="text-xs font-mono text-slate-500 hidden sm:inline-block">
+              <span className="text-xs font-mono text-slate-400 hidden sm:inline-block">
                 Auto-refreshing (updated {lastRefreshed.toLocaleTimeString()})
               </span>
             )}
@@ -97,13 +101,13 @@ export const AnalyticsPage: React.FC = () => {
               onClick={loadAnalytics}
               disabled={loading}
               icon={<RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />}
-              className="text-xs font-mono"
+              className="text-xs font-mono bg-slate-900/60 border-slate-700/80 hover:bg-slate-800"
             >
               Refresh
             </Button>
             <Link
               to="/playground"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#ffe814] hover:bg-yellow-300 text-black border-2 border-black font-mono text-xs font-black transition-colors shadow-comic-sm cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#ffe814] hover:bg-yellow-300 text-black border-2 border-black font-mono text-xs font-black transition-all shadow-comic-sm hover:scale-105 active:scale-95 cursor-pointer"
             >
               <Play className="w-3.5 h-3.5 fill-current" />
               <span>Test APIs</span>
@@ -146,7 +150,8 @@ export const AnalyticsPage: React.FC = () => {
           {/* Key Metric Cards */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {/* Total Requests */}
-            <div className="relative p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm overflow-visible">
+            <div className="card-glow-emerald relative p-4 rounded-xl border-2 border-black bg-[#070c18] shadow-comic-sm overflow-visible transition-transform duration-200 hover:-translate-y-1">
+              <div className="h-0.5 w-full bg-gradient-to-r from-emerald-400 to-transparent absolute top-0 left-0 rounded-t-xl" />
               <div className="hidden sm:block absolute -top-5 -right-3 pointer-events-none z-20">
                 <MemeSticker
                   src="/assets/memes/jagathy-shocked.png"
@@ -158,29 +163,35 @@ export const AnalyticsPage: React.FC = () => {
                 />
               </div>
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">TOTAL PANI</span>
-                <Activity className="w-4 h-4 text-[#38ef7d]" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-emerald-400/90">TOTAL PANI</span>
+                <div className="p-1 rounded bg-emerald-500/10 border border-emerald-500/20">
+                  <Activity className="w-3.5 h-3.5 text-[#38ef7d]" />
+                </div>
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono drop-shadow-[0_0_12px_rgba(56,239,125,0.3)]">
                 {data.totalRequests.toLocaleString()}
               </div>
               <span className="text-[10px] font-mono text-slate-400 mt-1 block">ആകെ അടിച്ച റിക്വസ്റ്റ്</span>
             </div>
 
             {/* Requests Today */}
-            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
+            <div className="card-glow-yellow relative p-4 rounded-xl border-2 border-black bg-[#070c18] shadow-comic-sm overflow-visible transition-transform duration-200 hover:-translate-y-1">
+              <div className="h-0.5 w-full bg-gradient-to-r from-yellow-400 to-transparent absolute top-0 left-0 rounded-t-xl" />
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">TODAY'S PANI</span>
-                <Clock className="w-4 h-4 text-[#ffe814]" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-yellow-400/90">TODAY'S PANI</span>
+                <div className="p-1 rounded bg-yellow-400/10 border border-yellow-400/20">
+                  <Clock className="w-3.5 h-3.5 text-[#ffe814]" />
+                </div>
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-[#ffe814] font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-[#ffe814] font-mono drop-shadow-[0_0_12px_rgba(255,232,20,0.3)]">
                 {data.requestsToday.toLocaleString()}
               </div>
               <span className="text-[10px] font-mono text-slate-400 mt-1 block">ഇന്നത്തെ പണി</span>
             </div>
 
             {/* Average Latency */}
-            <div className="relative p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm overflow-visible">
+            <div className="card-glow-cyan relative p-4 rounded-xl border-2 border-black bg-[#070c18] shadow-comic-sm overflow-visible transition-transform duration-200 hover:-translate-y-1">
+              <div className="h-0.5 w-full bg-gradient-to-r from-cyan-400 to-transparent absolute top-0 left-0 rounded-t-xl" />
               <div className="hidden sm:block absolute -top-5 -right-3 pointer-events-none z-20">
                 <MemeSticker
                   src="/assets/memes/innocent-serious.png"
@@ -191,48 +202,59 @@ export const AnalyticsPage: React.FC = () => {
                 />
               </div>
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">VEGAM (LATENCY)</span>
-                <Cpu className="w-4 h-4 text-cyan-400" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-cyan-400/90">VEGAM (LATENCY)</span>
+                <div className="p-1 rounded bg-cyan-400/10 border border-cyan-400/20">
+                  <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                </div>
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono drop-shadow-[0_0_12px_rgba(34,211,238,0.3)]">
                 {data.averageLatencyMs} <span className="text-xs font-normal">ms</span>
               </div>
               <span className="text-[10px] font-mono text-slate-400 mt-1 block">p95: {data.p95LatencyMs}ms</span>
             </div>
 
             {/* Fastest / Slowest */}
-            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
+            <div className="card-glow-violet relative p-4 rounded-xl border-2 border-black bg-[#070c18] shadow-comic-sm overflow-visible transition-transform duration-200 hover:-translate-y-1">
+              <div className="h-0.5 w-full bg-gradient-to-r from-purple-400 to-transparent absolute top-0 left-0 rounded-t-xl" />
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">VEGAM RANGE</span>
-                <Zap className="w-4 h-4 text-amber-400" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-purple-400/90">VEGAM RANGE</span>
+                <div className="p-1 rounded bg-purple-400/10 border border-purple-400/20">
+                  <Zap className="w-3.5 h-3.5 text-purple-400" />
+                </div>
               </div>
               <div className="text-sm font-extrabold text-white font-mono mt-1">
-                Min: <span className="text-emerald-400">{fastestLatency ?? '—'}ms</span>
+                Min: <span className="text-emerald-400 font-black">{fastestLatency ?? '—'}ms</span>
               </div>
               <div className="text-sm font-extrabold text-white font-mono mt-0.5">
-                Max: <span className="text-rose-400">{slowestLatency ?? '—'}ms</span>
+                Max: <span className="text-rose-400 font-black">{slowestLatency ?? '—'}ms</span>
               </div>
             </div>
 
             {/* Error Rate */}
-            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
+            <div className="card-glow-pink relative p-4 rounded-xl border-2 border-black bg-[#070c18] shadow-comic-sm overflow-visible transition-transform duration-200 hover:-translate-y-1">
+              <div className="h-0.5 w-full bg-gradient-to-r from-rose-400 to-transparent absolute top-0 left-0 rounded-t-xl" />
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">PANI PAALI</span>
-                <ShieldCheck className="w-4 h-4 text-rose-400" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-rose-400/90">PANI PAALI</span>
+                <div className="p-1 rounded bg-rose-400/10 border border-rose-400/20">
+                  <ShieldCheck className="w-3.5 h-3.5 text-rose-400" />
+                </div>
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-rose-400 font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-rose-400 font-mono drop-shadow-[0_0_12px_rgba(251,113,133,0.3)]">
                 {data.errorRatePercent}%
               </div>
               <span className="text-[10px] font-mono text-slate-400 mt-1 block">4xx &amp; 5xx calls</span>
             </div>
 
             {/* Global Score */}
-            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
+            <div className="card-glow-orange relative p-4 rounded-xl border-2 border-black bg-[#070c18] shadow-comic-sm overflow-visible transition-transform duration-200 hover:-translate-y-1">
+              <div className="h-0.5 w-full bg-gradient-to-r from-orange-400 to-transparent absolute top-0 left-0 rounded-t-xl" />
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">PANI INDEX</span>
-                <Flame className="w-4 h-4 text-orange-400" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-orange-400/90">PANI INDEX</span>
+                <div className="p-1 rounded bg-orange-400/10 border border-orange-400/20">
+                  <Flame className="w-3.5 h-3.5 text-orange-400" />
+                </div>
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-orange-400 font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-orange-400 font-mono drop-shadow-[0_0_12px_rgba(251,146,60,0.3)]">
                 {data.globalUselessness}
               </div>
               <span className="text-[10px] font-mono text-slate-400 mt-1 block">തട്ടിപ്പ് സ്കോർ</span>
@@ -242,9 +264,13 @@ export const AnalyticsPage: React.FC = () => {
           {/* Breakdown Charts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* 1. Requests by Endpoint */}
-            <div className="p-6 rounded-xl border border-slate-800 bg-slate-900/40 space-y-4">
+            <div className="glass-panel p-6 rounded-2xl relative overflow-hidden space-y-4">
+              <div className="h-0.5 w-full bg-gradient-to-r from-emerald-500/40 via-cyan-500/40 to-transparent absolute top-0 left-0" />
               <h3 className="text-xs font-semibold text-white uppercase tracking-wider font-mono flex items-center justify-between">
-                <span>Requests by Endpoint</span>
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Requests by Endpoint
+                </span>
                 <Database className="w-4 h-4 text-emerald-400" />
               </h3>
 
@@ -254,14 +280,14 @@ export const AnalyticsPage: React.FC = () => {
                   const colorConfig = ENDPOINT_COLORS[endpoint] || { bar: 'bg-slate-600', text: 'text-slate-300' };
 
                   return (
-                    <div key={endpoint} className="space-y-1">
+                    <div key={endpoint} className="space-y-1.5">
                       <div className="flex justify-between text-slate-300">
                         <span className={`truncate max-w-[260px] font-bold ${colorConfig.text}`}>{endpoint}</span>
                         <span className="text-slate-400 font-bold">{count} ({percentage}%)</span>
                       </div>
-                      <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#050811] border border-white/5 h-2.5 rounded-full overflow-hidden p-0.5">
                         <div
-                          className={`${colorConfig.bar} h-full rounded-full transition-all duration-500`}
+                          className={`${colorConfig.bar} h-full rounded-full transition-all duration-500 shadow-[0_0_8px_currentColor]`}
                           style={{ width: `${Math.max(4, percentage)}%` }}
                         ></div>
                       </div>
@@ -272,9 +298,13 @@ export const AnalyticsPage: React.FC = () => {
             </div>
 
             {/* 2. HTTP Status Breakdown */}
-            <div className="p-6 rounded-xl border border-slate-800 bg-slate-900/40 space-y-4">
+            <div className="glass-panel p-6 rounded-2xl relative overflow-hidden space-y-4">
+              <div className="h-0.5 w-full bg-gradient-to-r from-indigo-500/40 via-purple-500/40 to-transparent absolute top-0 left-0" />
               <h3 className="text-xs font-semibold text-white uppercase tracking-wider font-mono flex items-center justify-between">
-                <span>HTTP Status Code Distribution</span>
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+                  HTTP Status Code Distribution
+                </span>
                 <Activity className="w-4 h-4 text-indigo-400" />
               </h3>
 
@@ -311,14 +341,14 @@ export const AnalyticsPage: React.FC = () => {
                       : `HTTP ${status}`;
 
                   return (
-                    <div key={status} className="space-y-1">
+                    <div key={status} className="space-y-1.5">
                       <div className="flex justify-between text-slate-300">
                         <span className={`font-bold ${textColor}`}>{label}</span>
                         <span className="text-slate-400 font-bold">{count} ({percentage}%)</span>
                       </div>
-                      <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#050811] border border-white/5 h-2.5 rounded-full overflow-hidden p-0.5">
                         <div
-                          className={`${color} h-full rounded-full transition-all duration-500`}
+                          className={`${color} h-full rounded-full transition-all duration-500 shadow-[0_0_8px_currentColor]`}
                           style={{ width: `${Math.max(4, percentage)}%` }}
                         ></div>
                       </div>
@@ -330,7 +360,7 @@ export const AnalyticsPage: React.FC = () => {
           </div>
 
           {/* 3. Live Request Stream Table */}
-          <div className="relative rounded-xl border border-slate-800 bg-slate-900/40 overflow-visible">
+          <div className="glass-panel relative rounded-2xl overflow-visible">
             {/* Salim Kumar pointing sticker */}
             <div className="hidden sm:block absolute -top-8 right-6 pointer-events-none z-20">
               <MemeSticker
@@ -342,24 +372,24 @@ export const AnalyticsPage: React.FC = () => {
                 float={true}
               />
             </div>
-            <div className="p-5 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="p-5 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
                 <h3 className="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
                   <Terminal className="w-4 h-4 text-emerald-400" />
                   Live Request Stream
                 </h3>
                 <p className="text-[11px] text-slate-400 font-mono mt-0.5">
-                  Real HTTP calls captured by the in-memory telemetry middleware
+                  Real HTTP calls captured by the in-memory telemetry ring buffer
                 </p>
               </div>
-              <span className="text-xs font-mono text-slate-500">
+              <span className="text-xs font-mono text-slate-400 bg-white/5 px-2.5 py-1 rounded-md border border-white/10">
                 Latest {data.recentLogs.length} events
               </span>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs font-mono">
-                <thead className="bg-slate-900/90 text-slate-400 border-b border-slate-800">
+                <thead className="bg-[#050811]/90 text-slate-400 border-b border-white/10">
                   <tr>
                     <th className="p-3.5">Method</th>
                     <th className="p-3.5">Endpoint</th>
@@ -370,12 +400,12 @@ export const AnalyticsPage: React.FC = () => {
                     <th className="p-3.5">Timestamp</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/80 text-slate-300">
+                <tbody className="divide-y divide-white/5 text-slate-300">
                   {data.recentLogs.map((log) => {
                     const isSuccess = log.statusCode >= 200 && log.statusCode < 300;
                     const isRateLimited = log.statusCode === 429;
                     return (
-                      <tr key={log.id} className="hover:bg-slate-800/30 transition-colors">
+                      <tr key={log.id} className="hover:bg-white/[0.04] transition-colors">
                         <td className="p-3.5">
                           <EndpointBadge method={log.method as 'GET' | 'POST'} />
                         </td>
@@ -384,16 +414,16 @@ export const AnalyticsPage: React.FC = () => {
                           <span
                             className={`px-2 py-0.5 rounded font-bold text-[11px] ${
                               isSuccess
-                                ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                                ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-[0_0_8px_rgba(56,239,125,0.2)]'
                                 : isRateLimited
-                                ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                                : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                                ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20 shadow-[0_0_8px_rgba(251,191,36,0.2)]'
+                                : 'bg-rose-500/10 text-rose-400 border border-rose-500/20 shadow-[0_0_8px_rgba(251,113,133,0.2)]'
                             }`}
                           >
                             {log.statusCode}
                           </span>
                         </td>
-                        <td className="p-3.5 text-cyan-400">{log.durationMs}ms</td>
+                        <td className="p-3.5 text-cyan-400 font-semibold">{log.durationMs}ms</td>
                         <td className="p-3.5 text-slate-400">{log.apiKeyTier || 'guest'}</td>
                         <td className="p-3.5 text-slate-500">{log.ip}</td>
                         <td className="p-3.5 text-slate-500">

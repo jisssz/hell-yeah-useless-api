@@ -5,7 +5,6 @@ import { API_CATALOG, getApiBySlug } from '../data/apiCatalog';
 import { ApiMetadata } from '../types/api';
 import { executeApiCall, ExecutionResult, BASE_URL } from '../services/apiClient';
 import { PageHeader } from '../components/PageHeader';
-import { Badge } from '../components/Badge';
 import { ApiSelector } from '../components/playground/ApiSelector';
 import { RequestBuilder } from '../components/playground/RequestBuilder';
 import { ResponseViewer } from '../components/playground/ResponseViewer';
@@ -181,16 +180,29 @@ export const PlaygroundPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10 relative">
+      {/* Background ambient halos for Playground */}
+      <div className="absolute top-20 left-1/4 w-96 h-96 rounded-full bg-purple-600/10 blur-[140px] pointer-events-none" />
+      <div className="absolute top-40 right-10 w-[30rem] h-[30rem] rounded-full bg-cyan-600/10 blur-[150px] pointer-events-none" />
+
       <PageHeader
-        badge={<Badge variant="brand">⚡ Real Live HTTP Engine • പച്ചയായ സത്യം</Badge>}
+        badge={
+          <div className="inline-flex items-center gap-2">
+            <span className="px-3 py-1 rounded-full text-xs font-mono font-black border-2 border-black bg-[#ffe814] text-black shadow-comic-sm">
+              ⚡ LIVE HTTP RUNTIME
+            </span>
+            <span className="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-500/40">
+              ● RENDER GATEWAY ACTIVE
+            </span>
+          </div>
+        }
         title="API Playground (പരീക്ഷണശാല)"
-        description="Send real requests to APIs that solve problems nobody asked you to solve. Test latency, inspected headers, rate limits, and live responses with 100% genuine backend telemetry."
+        description="NASA mission control for completely useless APIs. Test latency, inspected headers, simulated rate limits, and real live responses with 100% genuine backend telemetry."
       />
 
       {/* Main Two-Column Playground Workspace */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: API Selector, Request Builder & cURL (5 cols on lg) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
+        {/* Left Column: API Selector, Request Builder & cURL (6 cols on lg) */}
         <div className="lg:col-span-6 space-y-6">
           {/* 1. API Selector */}
           <ApiSelector
@@ -199,10 +211,21 @@ export const PlaygroundPage: React.FC = () => {
             onSelect={handleSelectApi}
           />
 
-          {/* 2. Request Builder */}
-          <div className="relative p-5 rounded-xl border border-slate-800 bg-slate-900/30">
+          {/* 2. Request Builder Panel */}
+          <div className="relative p-6 rounded-2xl border-2 border-slate-700/80 bg-gradient-to-b from-[#0e1424] via-[#090d18] to-[#070a12] shadow-[0_0_35px_-5px_rgba(168,85,247,0.2),4px_4px_0_#000]">
+            {/* Mission Control Top Label */}
+            <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
+              <div className="flex items-center gap-2 text-xs font-mono font-black text-purple-300 uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
+                <span>MISSION SPEC // REQUEST BUILDER</span>
+              </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950/60 text-purple-300 border border-purple-500/30 font-bold">
+                {selectedApi.method} DISPATCH
+              </span>
+            </div>
+
             {/* Salim Kumar pointing sticker */}
-            <div className="hidden sm:block absolute -top-8 -right-4 z-20 pointer-events-none">
+            <div className="hidden sm:block absolute -top-9 -right-4 z-20 pointer-events-none">
               <MemeSticker
                 src="/assets/memes/salimkumar-pointing.png"
                 speech="REQUEST AYYIKO!"
@@ -211,6 +234,7 @@ export const PlaygroundPage: React.FC = () => {
                 size="w-16 sm:w-20"
               />
             </div>
+
             <RequestBuilder
               api={selectedApi}
               queryParams={queryParams}
@@ -236,10 +260,10 @@ export const PlaygroundPage: React.FC = () => {
           />
         </div>
 
-        {/* Right Column: Live Response & History (7 cols on lg) */}
+        {/* Right Column: Live Response & History (6 cols on lg) */}
         <div className="lg:col-span-6 space-y-6 relative">
           {/* Jagathy watching response */}
-          <div className="hidden sm:block absolute -top-10 right-2 z-20 pointer-events-none">
+          <div className="hidden sm:block absolute -top-11 right-4 z-20 pointer-events-none">
             <MemeSticker
               src="/assets/memes/jagathy-shocked.png"
               speech="LIVE JSON?!"
@@ -249,12 +273,15 @@ export const PlaygroundPage: React.FC = () => {
               float={true}
             />
           </div>
-          <div className="flex items-center justify-between">
-            <label className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-              Response Payload
+
+          <div className="flex items-center justify-between pb-1">
+            <label className="text-xs font-mono font-black uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+              <Terminal className="w-4 h-4 text-emerald-400" />
+              <span>LIVE TELEMETRY // RESPONSE CONSOLE</span>
             </label>
-            <span className="text-[11px] font-mono text-slate-500">Live JSON output</span>
+            <span className="text-[11px] font-mono text-emerald-400/80 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/30">
+              Live Gateway Output
+            </span>
           </div>
 
           {/* Live Response Panel */}

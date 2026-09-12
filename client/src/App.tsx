@@ -83,20 +83,30 @@ function useScrollReveal() {
 const AppInner: React.FC = () => {
   useScrollReveal();
   return (
-    <div className="flex flex-col min-h-screen bg-[#030712] text-slate-100 selection:bg-yellow-400 selection:text-black font-sans overflow-x-hidden">
-      <Navbar />
-      <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/apis" element={<CatalogPage />} />
-          <Route path="/apis/:slug" element={<ApiDetailPage />} />
-          <Route path="/playground" element={<PlaygroundPage />} />
-          <Route path="/docs" element={<DocsPage />} />
-          <Route path="/analytics" element={<AnalyticsPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </main>
-      <Footer />
+    <div className="relative flex flex-col min-h-screen bg-[#030712] text-slate-100 selection:bg-yellow-400 selection:text-black font-sans overflow-x-hidden">
+      {/* Global atmospheric background blobs & tech grid */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-purple-600/10 blur-[120px] blob-drift" />
+        <div className="absolute top-[35%] right-[-15%] w-[40vw] h-[40vw] rounded-full bg-blue-600/10 blur-[130px] blob-drift-2" />
+        <div className="absolute bottom-[-10%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-emerald-600/8 blur-[140px] blob-drift-3" />
+        <div className="absolute inset-0 dot-grid opacity-40" />
+      </div>
+
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/apis" element={<CatalogPage />} />
+            <Route path="/apis/:slug" element={<ApiDetailPage />} />
+            <Route path="/playground" element={<PlaygroundPage />} />
+            <Route path="/docs" element={<DocsPage />} />
+            <Route path="/analytics" element={<AnalyticsPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };

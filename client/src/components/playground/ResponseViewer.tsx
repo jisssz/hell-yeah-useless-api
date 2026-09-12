@@ -73,12 +73,68 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
 
   if (!result) {
     return (
-      <div className="h-full min-h-[380px] rounded-xl border border-dashed border-slate-800 bg-slate-950/40 flex flex-col items-center justify-center p-8 text-center text-slate-500">
-        <Terminal className="w-10 h-10 text-slate-700 mb-3" />
-        <p className="text-sm font-mono text-slate-400 font-semibold">Ready to Execute</p>
-        <p className="text-xs font-mono text-slate-600 max-w-xs mt-1">
-          Configure parameters on the left and click "Send Request" to trigger a real HTTP call.
-        </p>
+      <div className="h-full min-h-[440px] rounded-2xl border-2 border-slate-700/60 bg-gradient-to-b from-[#080d1a] via-[#050811] to-[#04060d] flex flex-col items-center justify-center p-8 text-center relative overflow-hidden shadow-2xl shadow-black/80">
+        {/* Background Radar / Blueprint Grid */}
+        <div className="absolute inset-0 blueprint-grid opacity-30 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-cyan-500/5 blur-3xl pointer-events-none" />
+
+        {/* High-Tech Radar Target Reticle */}
+        <div className="relative mb-6">
+          <div className="w-24 h-24 rounded-full border-2 border-cyan-500/30 flex items-center justify-center relative">
+            <div className="w-16 h-16 rounded-full border border-cyan-400/40 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-300/50 flex items-center justify-center">
+                <Terminal className="w-4 h-4 text-cyan-300 animate-pulse" />
+              </div>
+            </div>
+            {/* Animated sweeping radar arm */}
+            <div className="absolute inset-0 rounded-full animate-radar pointer-events-none">
+              <div className="w-1/2 h-0.5 bg-gradient-to-r from-transparent to-cyan-400 origin-right absolute top-1/2 right-1/2" />
+            </div>
+            {/* Crosshairs */}
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-cyan-400/60" />
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-cyan-400/60" />
+            <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-3 h-0.5 bg-cyan-400/60" />
+            <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-3 h-0.5 bg-cyan-400/60" />
+          </div>
+          <span className="absolute -bottom-2 -right-3 text-[9px] font-mono font-black bg-emerald-500 text-black px-1.5 py-0.5 rounded border border-black shadow-sm">
+            READY
+          </span>
+        </div>
+
+        {/* Title & Status */}
+        <div className="space-y-2 relative z-10 max-w-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 text-[11px] font-mono font-bold tracking-wider uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+            NASA MISSION CONTROL // TELEMETRY ARMED
+          </div>
+          <h4 className="text-base sm:text-lg font-bungee text-white tracking-wide">
+            Awaiting Useless Payload
+          </h4>
+          <p className="text-xs font-mono text-slate-400 leading-relaxed">
+            Configure parameters on the left and click <span className="text-yellow-300 font-bold">"CHEYYAM"</span> to trigger high-precision telemetry over real HTTP.
+          </p>
+        </div>
+
+        {/* Step Guide */}
+        <div className="mt-8 grid grid-cols-3 gap-2 text-left w-full max-w-sm relative z-10 font-mono text-[10px]">
+          <div className="p-2.5 rounded-lg border border-slate-800 bg-slate-900/60">
+            <span className="text-purple-400 font-bold block mb-0.5">STEP 1</span>
+            <span className="text-slate-400">Pick API</span>
+          </div>
+          <div className="p-2.5 rounded-lg border border-slate-800 bg-slate-900/60">
+            <span className="text-cyan-400 font-bold block mb-0.5">STEP 2</span>
+            <span className="text-slate-400">Set Params</span>
+          </div>
+          <div className="p-2.5 rounded-lg border border-yellow-400/30 bg-yellow-400/5">
+            <span className="text-yellow-400 font-bold block mb-0.5">STEP 3</span>
+            <span className="text-slate-300">Fire Call 🔥</span>
+          </div>
+        </div>
+
+        {/* Humorous Malayalam footer */}
+        <div className="mt-6 text-[11px] font-mono text-slate-500 relative z-10">
+          "ഒരു റിക്വസ്റ്റ് അടിച്ചാലേ എന്തേലും കാണിക്കൂ!" • 100% Real Express Backend
+        </div>
       </div>
     );
   }
@@ -112,9 +168,9 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
   const requestId = result.headers['x-request-id'];
 
   return (
-    <div className="response-pop rounded-xl border-2 border-black bg-[#080c14] overflow-hidden flex flex-col shadow-comic">
+    <div className="response-pop rounded-2xl border-2 border-black bg-[#060a14] overflow-hidden flex flex-col shadow-[4px_4px_0_#000,0_0_35px_-5px_rgba(56,239,125,0.25)]">
       {/* Response Header Status Bar */}
-      <div className="px-4 py-3 bg-slate-900/90 border-b-2 border-black flex flex-wrap items-center justify-between gap-3">
+      <div className="px-4 py-3 bg-gradient-to-r from-slate-900 via-[#0d1424] to-slate-900 border-b-2 border-black flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <span
             className={`px-3 py-1 rounded text-xs font-mono font-black tracking-wider border-2 border-black ${
@@ -128,13 +184,13 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
             {getStatusDisplay()}
           </span>
 
-          <span className="flex items-center gap-1 text-xs font-mono text-slate-300 bg-slate-800 px-2.5 py-1 rounded border border-slate-700">
-            <Clock className="w-3 h-3 text-[#ffe814]" />
+          <span className="flex items-center gap-1.5 text-xs font-mono text-yellow-300 bg-yellow-400/10 px-2.5 py-1 rounded-lg border border-yellow-400/30 font-bold">
+            <Clock className="w-3.5 h-3.5 text-yellow-400" />
             <span>{result.durationMs}ms</span>
           </span>
 
-          <span className="hidden sm:flex items-center gap-1 text-xs font-mono text-slate-300 bg-slate-800 px-2.5 py-1 rounded border border-slate-700">
-            <ShieldCheck className="w-3 h-3 text-cyan-400" />
+          <span className="hidden sm:flex items-center gap-1 text-xs font-mono text-cyan-300 bg-cyan-950/60 px-2.5 py-1 rounded-lg border border-cyan-500/30 font-bold">
+            <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
             <span>{apiTier}</span>
           </span>
         </div>
@@ -142,7 +198,7 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1 text-xs font-mono text-slate-300 hover:text-black bg-slate-800 hover:bg-[#ffe814] px-2.5 py-1 rounded border border-slate-700 transition-colors font-bold cursor-pointer"
+            className="flex items-center gap-1.5 text-xs font-mono text-slate-200 hover:text-black bg-slate-800 hover:bg-[#ffe814] px-3 py-1.5 rounded-lg border border-slate-600 transition-colors font-bold cursor-pointer shadow-sm"
           >
             {copied ? (
               <>
@@ -152,16 +208,16 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
             ) : (
               <>
                 <Copy className="w-3.5 h-3.5" />
-                <span>Copy</span>
+                <span>Copy JSON</span>
               </>
             )}
           </button>
           <button
             onClick={onClear}
             title="Clear response"
-            className="text-slate-400 hover:text-rose-400 p-1.5 rounded hover:bg-slate-800 transition-colors cursor-pointer"
+            className="text-slate-400 hover:text-rose-400 p-1.5 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
           >
-            <Trash2 className="w-3.5 h-3.5" />
+            <Trash2 className="w-4 h-4" />
           </button>
         </div>
       </div>
@@ -178,28 +234,28 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
       )}
 
       {/* Response Metadata Badges */}
-      <div className="px-4 py-2 bg-slate-950/80 border-b border-slate-800 flex flex-wrap items-center gap-3 text-[11px] font-mono text-slate-400">
+      <div className="px-4 py-2 bg-black/60 border-b border-slate-800/80 flex flex-wrap items-center gap-3 text-[11px] font-mono text-slate-400">
         {rateLimitRemaining && rateLimitTotal && (
           <div>
             Quota:{' '}
-            <span className={Number(rateLimitRemaining) < 10 ? 'text-amber-400 font-bold' : 'text-slate-200'}>
-              {rateLimitRemaining}/{rateLimitTotal}
+            <span className={Number(rateLimitRemaining) < 10 ? 'text-amber-400 font-bold' : 'text-emerald-400 font-bold'}>
+              {rateLimitRemaining}/{rateLimitTotal} remaining
             </span>
           </div>
         )}
         {requestId && (
           <div className="hidden md:block truncate max-w-[200px]">
-            ID: <span className="text-slate-300">{requestId}</span>
+            ID: <span className="text-slate-300 font-mono">{requestId}</span>
           </div>
         )}
         <div className="ml-auto text-[#38ef7d] font-bold flex items-center gap-1.5">
           <Layers className="w-3.5 h-3.5" />
-          <span>Real Live Backend (100% തട്ടിപ്പല്ല)</span>
+          <span>Verified Render Gateway Response</span>
         </div>
       </div>
 
       {/* JSON Payload View */}
-      <div className="p-4 overflow-x-auto max-h-[480px] font-mono text-xs leading-relaxed text-slate-200 bg-[#050811]">
+      <div className="p-4 overflow-x-auto max-h-[480px] font-mono text-xs leading-relaxed text-slate-100 bg-[#03060f]">
         <pre>{jsonString}</pre>
       </div>
     </div>

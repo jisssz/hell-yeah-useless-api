@@ -2,13 +2,63 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, SlidersHorizontal, ArrowUpDown, Play, BookOpen, Layers, Terminal } from 'lucide-react';
 import { API_CATALOG } from '../data/apiCatalog';
-import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
 import { EndpointBadge } from '../components/EndpointBadge';
 import { PageHeader } from '../components/PageHeader';
 import { MemeSticker } from '../components/MemeSticker';
 
 type SortOption = 'DEFAULT' | 'MOST_USELESS' | 'LEAST_USELESS' | 'ALPHABETICAL';
+
+const CATALOG_THEMES: Record<string, {
+  border: string;
+  glow: string;
+  topGradient: string;
+  accentText: string;
+  sticker: { src: string; speech: string; rotation: string; speechColor: string };
+}> = {
+  vibe: {
+    border: 'border-purple-500/80',
+    glow: 'hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.4),4px_4px_0_#000]',
+    topGradient: 'from-purple-500 via-indigo-500 to-blue-500',
+    accentText: 'text-purple-300',
+    sticker: { src: '/assets/memes/suraj-laughing.png', speech: 'VIBE CHECK!', rotation: 'rotate-[6deg]', speechColor: 'bg-purple-400 text-black' },
+  },
+  motivation: {
+    border: 'border-yellow-400/80',
+    glow: 'hover:shadow-[0_0_30px_-5px_rgba(250,204,21,0.4),4px_4px_0_#000]',
+    topGradient: 'from-yellow-400 via-amber-500 to-orange-500',
+    accentText: 'text-yellow-300',
+    sticker: { src: '/assets/memes/lal-laughing.png', speech: 'SHUBHAM!', rotation: 'rotate-[-5deg]', speechColor: 'bg-yellow-400 text-black' },
+  },
+  necessity: {
+    border: 'border-lime-400/80',
+    glow: 'hover:shadow-[0_0_30px_-5px_rgba(163,230,53,0.4),4px_4px_0_#000]',
+    topGradient: 'from-lime-400 via-emerald-500 to-teal-500',
+    accentText: 'text-lime-300',
+    sticker: { src: '/assets/memes/innocent-serious.png', speech: 'VENO CHETTA?', rotation: 'rotate-[5deg]', speechColor: 'bg-lime-400 text-black' },
+  },
+  decision: {
+    border: 'border-blue-400/80',
+    glow: 'hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.4),4px_4px_0_#000]',
+    topGradient: 'from-blue-500 via-indigo-600 to-violet-600',
+    accentText: 'text-blue-300',
+    sticker: { src: '/assets/memes/salimkumar-pointing.png', speech: 'YES OR NO?!', rotation: 'rotate-[-6deg]', speechColor: 'bg-blue-400 text-black' },
+  },
+  roast: {
+    border: 'border-pink-500/80',
+    glow: 'hover:shadow-[0_0_30px_-5px_rgba(244,63,94,0.4),4px_4px_0_#000]',
+    topGradient: 'from-pink-500 via-rose-600 to-red-600',
+    accentText: 'text-pink-300',
+    sticker: { src: '/assets/memes/mammootty-crying.png', speech: 'DAMAGE!', rotation: 'rotate-[6deg]', speechColor: 'bg-rose-500 text-white' },
+  },
+  excuse: {
+    border: 'border-amber-400/80',
+    glow: 'hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.4),4px_4px_0_#000]',
+    topGradient: 'from-orange-500 via-amber-500 to-yellow-400',
+    accentText: 'text-amber-300',
+    sticker: { src: '/assets/memes/mukesh-laugh.png', speech: 'ATHUM PARANJU!', rotation: 'rotate-[-6deg]', speechColor: 'bg-amber-400 text-black' },
+  },
+};
 
 export const CatalogPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -185,6 +235,14 @@ export const CatalogPage: React.FC = () => {
       {/* Grid of API Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredAndSortedApis.map((api) => {
+          const theme = CATALOG_THEMES[api.slug] || {
+            border: 'border-slate-700',
+            glow: 'shadow-comic',
+            topGradient: 'from-yellow-400 to-emerald-400',
+            accentText: 'text-white',
+            sticker: { src: '/assets/memes/salimkumar-pointing.png', speech: 'PANI!', rotation: 'rotate-0', speechColor: 'bg-yellow-400 text-black' },
+          };
+
           const inputBadgeText =
             api.queryParams && api.queryParams.length > 0
               ? `${api.queryParams.length} query param`
@@ -193,59 +251,67 @@ export const CatalogPage: React.FC = () => {
               : 'Zero input required';
 
           return (
-            <Card key={api.slug} hoverEffect className="flex flex-col justify-between h-full group border-slate-800/80">
-              <div>
+            <div
+              key={api.slug}
+              className={`relative flex flex-col justify-between h-full rounded-2xl border-2 bg-gradient-to-b from-[#0d1222] via-[#090e1a] to-[#050811] ${theme.border} ${theme.glow} shadow-comic transition-all duration-300 hover:-translate-y-1.5 overflow-hidden group`}
+            >
+              {/* Top gradient accent line */}
+              <div className={`h-1.5 w-full bg-gradient-to-r ${theme.topGradient}`} />
+
+              <div className="p-6">
                 {/* Header with Badges */}
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <div className="flex items-center gap-2">
                     <EndpointBadge method={api.method} />
-                    <span className="font-mono text-xs text-slate-400 font-semibold">{api.endpoint}</span>
+                    <span className="font-mono text-xs text-slate-300 font-bold">{api.endpoint}</span>
                   </div>
-                  <Badge variant="brand">{api.uselessnessScore}%</Badge>
+                  <span className="text-[11px] font-mono font-black px-2 py-0.5 rounded bg-black/60 text-yellow-300 border border-yellow-400/40">
+                    {api.uselessnessScore}% USELESS
+                  </span>
                 </div>
 
                 {/* Title & Tagline */}
-                <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">
+                <h3 className={`text-xl font-black text-white group-hover:${theme.accentText} transition-colors tracking-tight mt-2`}>
                   {api.name}
                 </h3>
-                <p className="text-xs font-mono text-emerald-500/80 mt-1">{api.tagline}</p>
+                <p className="text-xs font-mono text-yellow-400/90 mt-1 font-semibold">{api.tagline}</p>
 
                 {/* Description */}
-                <p className="text-xs text-slate-400 mt-3 leading-relaxed font-mono">
+                <p className="text-xs text-slate-300 mt-3 leading-relaxed font-mono">
                   {api.description}
                 </p>
 
                 {/* Parameter summary */}
-                <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                  <span>Input:</span>
-                  <span className="text-slate-300 font-medium">{inputBadgeText}</span>
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                  <span className="font-bold">Input Spec:</span>
+                  <span className="text-slate-200 font-bold bg-white/5 px-2 py-0.5 rounded border border-white/10">{inputBadgeText}</span>
                 </div>
               </div>
 
               {/* Card Footer with Docs & Playground Actions */}
-              <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between gap-2">
-                <span className="text-[11px] font-mono text-slate-500 truncate max-w-[120px]">
+              <div className="p-5 pt-3 border-t border-white/10 bg-black/40 flex items-center justify-between gap-2 relative">
+                <span className="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">
                   {api.category}
                 </span>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 relative z-10">
                   <Link
                     to={`/apis/${api.slug}`}
-                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-700 hover:border-slate-500 text-[11px] font-mono text-slate-300 hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-xs font-mono text-slate-200 hover:text-white transition-all font-bold"
                   >
-                    <BookOpen className="w-3 h-3" />
-                    <span>View Docs</span>
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Docs</span>
                   </Link>
                   <Link
                     to={`/playground?api=${api.slug}`}
-                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:text-emerald-300 text-[11px] font-mono font-bold transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-yellow-400 hover:bg-yellow-300 text-black border-2 border-black text-xs font-bungee tracking-wider transition-all shadow-comic-sm hover:scale-105"
                   >
-                    <Play className="w-3 h-3" />
+                    <Play className="w-3 h-3 fill-current" />
                     <span>Try API</span>
                   </Link>
                 </div>
               </div>
-            </Card>
+            </div>
           );
         })}
       </div>
