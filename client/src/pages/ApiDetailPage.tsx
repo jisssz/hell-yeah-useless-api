@@ -7,6 +7,16 @@ import { Badge } from '../components/Badge';
 import { CodeBlock } from '../components/CodeBlock';
 import { ErrorState } from '../components/ErrorState';
 import { Card } from '../components/Card';
+import { MemeSticker } from '../components/MemeSticker';
+
+const MEME_MAP: Record<string, { src: string; speech: string }> = {
+  vibe: { src: '/assets/memes/suraj-laughing.png', speech: 'ITH ENTH VIBE?!' },
+  excuses: { src: '/assets/memes/salimkumar-pointing.png', speech: 'KALLAM PARAYAL!' },
+  overthinker: { src: '/assets/memes/salimkumar-class.png', speech: 'ANTHYAMILLE?!' },
+  procrastinate: { src: '/assets/memes/innocent-serious.png', speech: 'PINNE CHEYYAM!' },
+  bhavan: { src: '/assets/memes/mammootty-crying.png', speech: 'AYYO KUDUMBAM!' },
+  kollam: { src: '/assets/memes/mukesh-laugh.png', speech: 'KOLLAM SPECIAL!' },
+};
 
 export const ApiDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -17,7 +27,7 @@ export const ApiDetailPage: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 py-16">
         <ErrorState
           title="Endpoint Not Found"
-          message={`The endpoint "/apis/${slug}" does not exist in the USELESS API Catalog. Even by our standards, this endpoint has no purpose.`}
+          message={`The endpoint "/apis/${slug}" does not exist in the നരകം EVIDEHHHH ? Catalog. Even by our standards, this endpoint has no purpose.`}
         />
         <div className="mt-6">
           <Link
@@ -67,12 +77,24 @@ export const ApiDetailPage: React.FC = () => {
           <p className="text-base text-slate-300 mt-3 max-w-3xl leading-relaxed">{api.description}</p>
         </div>
 
-        <div className="shrink-0 flex items-center gap-3">
+        <div className="shrink-0 flex items-center gap-4">
+          {MEME_MAP[api.slug] && (
+            <div className="hidden sm:block">
+              <MemeSticker
+                src={MEME_MAP[api.slug].src}
+                speech={MEME_MAP[api.slug].speech}
+                speechPosition="top-left"
+                rotation="rotate-[-4deg]"
+                size="w-20"
+                float
+              />
+            </div>
+          )}
           <Link
             to={`/playground?api=${api.slug}`}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold font-mono transition-colors shadow-lg shadow-emerald-500/10"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#ffe814] hover:bg-yellow-300 text-black border-2 border-black font-mono text-xs font-black transition-colors shadow-comic cursor-pointer"
           >
-            <Play className="w-4 h-4" />
+            <Play className="w-4 h-4 fill-current" />
             <span>Try in Playground</span>
           </Link>
         </div>

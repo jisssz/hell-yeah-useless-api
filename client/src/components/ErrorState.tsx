@@ -12,7 +12,7 @@ interface ErrorStateProps {
 
 export const ErrorState: React.FC<ErrorStateProps> = ({
   title = 'Service Anomaly Detected',
-  message = `Failed to connect to USELESS API Gateway. Please ensure backend is active on ${BASE_URL}.`,
+  message = `Failed to connect to നരകം Gateway. Please ensure backend is active on ${BASE_URL}.`,
   onRetry,
   className = '',
 }) => {

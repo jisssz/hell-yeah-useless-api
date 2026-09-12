@@ -4,6 +4,7 @@ import { Shield, Zap, AlertCircle, Play, CheckCircle2, Activity } from 'lucide-r
 import { PageHeader } from '../components/PageHeader';
 import { Badge } from '../components/Badge';
 import { CodeBlock } from '../components/CodeBlock';
+import { MemeSticker } from '../components/MemeSticker';
 import { BASE_URL } from '../services/apiClient';
 
 export const DocsPage: React.FC = () => {
@@ -51,7 +52,7 @@ curl -X POST "${BASE_URL}/api/v1/decision" \\
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
       <PageHeader
-        badge={<Badge variant="brand">🍋 Platform Manual &amp; Satyavangmoolam</Badge>}
+        badge={<Badge variant="brand">🔥 Platform Manual &amp; Satyavangmoolam</Badge>}
         title="നരകം EVIDEHHHH ? Docs"
         description="Everything you need to integrate infrastructure that nobody asked you to build. Enterprise stability for Malayalam developer satire."
         actions={
@@ -66,13 +67,23 @@ curl -X POST "${BASE_URL}/api/v1/decision" \\
       />
 
       {/* 1. Quick Start Flow */}
-      <section className="space-y-4">
+      <section className="space-y-4 relative">
+        <div className="hidden sm:block absolute -top-8 right-0 pointer-events-none">
+          <MemeSticker
+            src="/assets/memes/innocent-serious.png"
+            speech="VAAYICHITTU PANI!"
+            speechPosition="top-left"
+            rotation="rotate-[-6deg]"
+            size="w-20"
+            float
+          />
+        </div>
         <h2 className="text-lg font-bold text-white font-mono flex items-center gap-2 border-b border-slate-800 pb-2">
           <Zap className="w-5 h-5 text-amber-400" />
           1. Quick Start
         </h2>
         <p className="text-xs text-slate-300 font-mono leading-relaxed">
-          Follow this 4-step workflow to integrate USELESS API into your local terminal or frontend client:
+          Follow this 4-step workflow to integrate നരകം EVIDEHHHH ? API into your local terminal or frontend client:
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">

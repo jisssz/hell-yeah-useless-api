@@ -83,7 +83,7 @@ function useScrollReveal() {
 const AppInner: React.FC = () => {
   useScrollReveal();
   return (
-    <div className="flex flex-col min-h-screen bg-[#030712] text-slate-100 selection:bg-yellow-400 selection:text-black font-sans">
+    <div className="flex flex-col min-h-screen bg-[#030712] text-slate-100 selection:bg-yellow-400 selection:text-black font-sans overflow-x-hidden">
       <Navbar />
       <main className="flex-1">
         <Routes>

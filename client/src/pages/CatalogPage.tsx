@@ -6,6 +6,7 @@ import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
 import { EndpointBadge } from '../components/EndpointBadge';
 import { PageHeader } from '../components/PageHeader';
+import { MemeSticker } from '../components/MemeSticker';
 
 type SortOption = 'DEFAULT' | 'MOST_USELESS' | 'LEAST_USELESS' | 'ALPHABETICAL';
 
@@ -52,20 +53,32 @@ export const CatalogPage: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-      <PageHeader
-        badge={<Badge variant="brand">🍋 6 REAL ENDPOINTS • ഒരു കാര്യവും നടക്കില്ല</Badge>}
-        title="API Catalog (ആറ് അഗ്രഗണ്യന്മാർ)"
-        description="Explore all six microservices engineered strictly for satirical inefficacy. Real endpoints, instant telemetry, and 100% genuine Mallu existentialism."
-        actions={
-          <Link
-            to="/playground"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#ffe814] hover:bg-yellow-300 text-black border-2 border-black font-mono text-xs font-black transition-colors shadow-comic-sm cursor-pointer"
-          >
-            <Play className="w-3.5 h-3.5 fill-current" />
-            <span>Open Playground</span>
-          </Link>
-        }
-      />
+      <div className="relative">
+        <PageHeader
+          badge={<Badge variant="brand">🔥 6 REAL ENDPOINTS • ഒരു കാര്യവും നടക്കില്ല</Badge>}
+          title="API Catalog (ആറ് അഗ്രഗണ്യന്മാർ)"
+          description="Explore all six microservices engineered strictly for satirical inefficacy. Real endpoints, instant telemetry, and 100% genuine Mallu existentialism."
+          actions={
+            <Link
+              to="/playground"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#ffe814] hover:bg-yellow-300 text-black border-2 border-black font-mono text-xs font-black transition-colors shadow-comic-sm cursor-pointer"
+            >
+              <Play className="w-3.5 h-3.5 fill-current" />
+              <span>Open Playground</span>
+            </Link>
+          }
+        />
+        <div className="hidden lg:block absolute -top-3 right-56 pointer-events-none">
+          <MemeSticker
+            src="/assets/memes/salimkumar-pointing.png"
+            speech="SELECT CHEYYEDAA!"
+            speechPosition="top-right"
+            rotation="rotate-[6deg]"
+            size="w-20"
+            float
+          />
+        </div>
+      </div>
 
       {/* Platform Summary Bar */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl border-2 border-black bg-slate-900/90 text-xs font-mono shadow-comic-sm">
