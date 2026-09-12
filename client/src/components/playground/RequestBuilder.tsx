@@ -124,7 +124,7 @@ export const RequestBuilder: React.FC<RequestBuilderProps> = ({
       {!hasQueryParams && !hasBodyFields && (
         <div className="p-3.5 rounded-lg border border-amber-500/30 bg-amber-500/5 text-xs font-mono text-amber-200/90 flex items-start gap-2.5">
           <HelpCircle className="w-4 h-4 text-[#ffe814] shrink-0 mt-0.5" />
-          <span>നാരങ്ങാവെള്ളം പോലെ സിമ്പിൾ — This endpoint requires zero inputs. Pure deterministic existential nonsense generated instantly.</span>
+          <span>പച്ചവെള്ളം പോലെ സിമ്പിൾ — This endpoint requires zero inputs. Pure deterministic existential nonsense generated instantly.</span>
         </div>
       )}
 

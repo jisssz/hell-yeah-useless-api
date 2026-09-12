@@ -127,7 +127,7 @@ export const AnalyticsPage: React.FC = () => {
           <div>
             <h3 className="text-base font-bold text-white">ഇതുവരെ ഒരു പണിയും കിട്ടിയിട്ടില്ല.</h3>
             <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-              നാരങ്ങാവെള്ളം ഓർഡർ ചെയ്യാൻ ആരുമില്ല... The infrastructure is ready. Humanity simply hasn't needed it yet.
+              പണി ചോദിച്ചു വാങ്ങാൻ ആരുമില്ല... The infrastructure is ready. Humanity simply hasn't needed it yet.
             </p>
           </div>
           <Link

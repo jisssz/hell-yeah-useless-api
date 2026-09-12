@@ -19,10 +19,31 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
 
   if (isLoading) {
     return (
-      <div className="h-full min-h-[380px] rounded-xl border border-slate-800 bg-[#080c14] flex flex-col items-center justify-center p-8 text-center">
-        <div className="w-10 h-10 rounded-full border-2 border-emerald-500/20 border-t-emerald-500 animate-spin mb-4" />
-        <p className="text-sm font-mono text-slate-300 font-semibold">Executing Live HTTP Call...</p>
-        <p className="text-xs font-mono text-slate-500 mt-1">Instrumenting telemetry and calculating uselessness</p>
+      <div className="h-full min-h-[380px] rounded-xl border-2 border-yellow-400/40 bg-[#080c14] flex flex-col items-center justify-center p-8 text-center shadow-comic-yellow">
+        {/* Animated 4-step journey */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
+          <div className="px-3 py-1.5 rounded-lg bg-blue-500/20 border border-blue-400/40 text-blue-300 font-mono text-xs font-bold animate-pulse">
+            1. CLIENT REQUEST 📡
+          </div>
+          <span className="text-yellow-400 font-bold hidden sm:inline">→</span>
+          <div className="px-3 py-1.5 rounded-lg bg-purple-500/20 border border-purple-400/40 text-purple-300 font-mono text-xs font-bold animate-pulse" style={{ animationDelay: '0.2s' }}>
+            2. NARAKAM GATEWAY ⚡
+          </div>
+          <span className="text-yellow-400 font-bold hidden sm:inline">→</span>
+          <div className="px-3 py-1.5 rounded-lg bg-amber-500/20 border border-amber-400/40 text-amber-300 font-mono text-xs font-bold animate-pulse" style={{ animationDelay: '0.4s' }}>
+            3. USELESS ENGINE ⚙️
+          </div>
+          <span className="text-yellow-400 font-bold hidden sm:inline">→</span>
+          <div className="px-3 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-mono text-xs font-bold animate-pulse" style={{ animationDelay: '0.6s' }}>
+            4. SCENE COMPLETE 🔥
+          </div>
+        </div>
+
+        <div className="w-8 h-8 rounded-full border-2 border-yellow-400/20 border-t-yellow-400 animate-spin mb-3" />
+        <p className="text-sm font-bungee text-white tracking-wide">EXECUTING LIVE HTTP CALL...</p>
+        <p className="text-xs font-mono text-yellow-400/80 mt-1 font-semibold">
+          Instrumenting telemetry and calculating 99.8% uselessness
+        </p>
       </div>
     );
   }
@@ -91,7 +112,7 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
   const requestId = result.headers['x-request-id'];
 
   return (
-    <div className="rounded-xl border-2 border-black bg-[#080c14] overflow-hidden flex flex-col shadow-comic">
+    <div className="response-pop rounded-xl border-2 border-black bg-[#080c14] overflow-hidden flex flex-col shadow-comic">
       {/* Response Header Status Bar */}
       <div className="px-4 py-3 bg-slate-900/90 border-b-2 border-black flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">

@@ -152,6 +152,10 @@
   50%       { text-shadow: 0 0 40px currentColor, 0 0 100px currentColor; }
 }
 @keyframes rotate-big { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes slide-x-loop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 @keyframes blob-drift {
   0%, 100% { transform: translate(0,0) scale(1); }
   33%       { transform: translate(20px,-15px) scale(1.05); }
@@ -163,6 +167,7 @@
 .animate-pulse-scale { animation: pulse-scale   3s ease-in-out infinite; }
 .animate-glow-pulse  { animation: glow-pulse    2s ease-in-out infinite; }
 .animate-rotate-slow { animation: rotate-big   30s linear infinite; }
+.animate-slide-x     { animation: slide-x-loop  18s linear infinite; }
 .blob-drift          { animation: blob-drift    8s ease-in-out infinite; }
 .blob-drift-2        { animation: blob-drift   11s ease-in-out infinite reverse; }
 .blob-drift-3        { animation: blob-drift   14s ease-in-out infinite 3s; }

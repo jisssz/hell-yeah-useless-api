@@ -2,8 +2,8 @@
 
 
 
-# NARAGAM EVide? 🍋🎯
-> **"നാരങ്ങം എവിടെ?" — Infrastructure for problems nobody asked you to solve.**
+# നരകം EVIDEHHHH ? 🔥🎯
+> **"നരകം എവിടെ? ഇവിടെ ഉണ്ട് API ആയിട്ട്!" — Infrastructure for problems nobody asked you to solve.**
 
 [![TinkerHub Useless Projects 3.0](https://img.shields.io/badge/TinkerHub-Useless%20Projects%203.0-26?color=%2310b981)](https://tinkerhub.org/events/1M8ORET9A1/useless-projects-3.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -14,7 +14,7 @@
 ---
 
 ## Basic Details
-### Team Name: NARAGAM EVide?
+### Team Name: നരകം EVIDEHHHH ?
 
 ### Team Members
 - Team Lead: Jiss Hajan - [ADD COLLEGE NAME] <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Replace [ADD COLLEGE NAME] with your institution -->
@@ -22,7 +22,7 @@
 - Member 3: [ADD TEAM MEMBER 3 NAME] - [ADD COLLEGE NAME] <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Add teammate name & college if applicable -->
 
 ### Project Description
-NARAGAM EVide? is an enterprise-grade cloud API platform engineered strictly for Malayalam developer satire and non-existent problems. It marries the visual insanity and existential despair of Malayalam cinema memes (Dasan & Vijayan, Innocent, Salim Kumar, Jagathy) with brutally serious developer infrastructure: real Express REST microservices, simulated API key tiers, an interactive playground, real-time in-memory telemetry, and live analytics.
+നരകം EVIDEHHHH ? is an enterprise-grade cloud API platform engineered strictly for Malayalam developer satire and non-existent problems. It marries the visual insanity and existential despair of Malayalam cinema memes (Dasan & Vijayan, Innocent, Salim Kumar, Jagathy) with brutally serious developer infrastructure: real Express REST microservices, simulated API key tiers, an interactive playground, real-time in-memory telemetry, and live analytics.
 
 ### The Problem (that doesn't exist)
 In the high-pressure world of software engineering, developers face absurd existential dilemmas:
@@ -30,12 +30,12 @@ In the high-pressure world of software engineering, developers face absurd exist
 - *Is this client meeting genuinely necessary, or could it have been an Innocent reaction sticker?*
 - *Why did staging break when Mercury was in retrograde?* ("പണി പാളി!")
 - *Who will ruthlessly roast my tech stack without corporate sugarcoating?*
-- *Where is the lime juice we were promised?* ("നാരങ്ങം എവിടെ?")
+- *Where is the chaos we were promised?* ("നരകം എവിടെ?")
 
 Until now, zero enterprise cloud providers offered high-availability microservices to answer these pressing non-issues.
 
 ### The Solution (that nobody asked for)
-NARAGAM EVide? delivers six hyper-engineered, low-latency microservices with zero external database dependencies:
+നരകം EVIDEHHHH ? delivers six hyper-engineered, low-latency microservices with zero external database dependencies:
 1. **Decision Engine (`POST /api/v1/decision`)**: Deterministic binary decision-making with mathematically overengineered justifications.
 2. **Vibe Oracle (`GET /api/v1/vibe`)**: Developer energy & cosmos diagnostics with chaos indices.
 3. **Existential Motivation (`GET /api/v1/motivation`)**: Counter-productive, unhelpful Malayalam-flavored productivity wisdom.
@@ -43,7 +43,7 @@ NARAGAM EVide? delivers six hyper-engineered, low-latency microservices with zer
 5. **Tech Stack Roaster (`POST /api/v1/roast`)**: Brutal, algorithmic architectural critiques.
 6. **Enterprise Excuse Generator (`POST /api/v1/excuse`)**: Corporate and technical scapegoats for production disasters.
 
-Targeting TinkerHub's *"Most Over-Engineered Solution to a Non-Problem"* side quest, NARAGAM EVide? achieves comedic contrast: loud Mallu meme culture on the outside × high-availability developer infrastructure on the inside.
+Targeting TinkerHub's *"Most Over-Engineered Solution to a Non-Problem"* side quest, നരകം EVIDEHHHH ? achieves comedic contrast: loud Mallu meme culture on the outside × high-availability developer infrastructure on the inside.
 
 ---
 
@@ -209,7 +209,7 @@ For Hardware:
 ## Project Demo
 ### Video
 [ADD DEMO VIDEO LINK]
-*A 2-minute walkthrough of the NARAGAM EVide? developer portal, live API Playground, cURL integration, and real-time telemetry streaming.*
+*A 2-minute walkthrough of the നരകം EVIDEHHHH ? developer portal, live API Playground, cURL integration, and real-time telemetry streaming.*
 <!-- 🧑‍💻 HUMAN ACTION REQUIRED: Replace [ADD DEMO VIDEO LINK] with your actual video link (YouTube/Loom) -->
 
 ### Additional Demos & Live Links
