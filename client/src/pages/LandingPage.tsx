@@ -32,15 +32,15 @@ export const LandingPage: React.FC = () => {
       icon: <Activity className="w-5 h-5 text-cyan-400" />
     },
     {
-      title: 'Nanosecond Latency',
+      title: 'Sub-Millisecond Response',
       value: '< 1.5ms Latency',
-      desc: 'High-resolution timing injected into every response via X-Response-Time.',
+      desc: 'High-resolution hrtime measurement injected into every response via X-Response-Time.',
       icon: <Clock className="w-5 h-5 text-amber-400" />
     },
     {
       title: 'Live Usage Dashboard',
-      value: 'Zero Polling Delay',
-      desc: 'Live aggregation of status distribution, p95 latency, and wasted cycle metrics.',
+      value: '5s Live Polling',
+      desc: 'Live aggregation of status distribution, p95 latency, and satirical uselessness score.',
       icon: <Cpu className="w-5 h-5 text-rose-400" />
     },
     {
