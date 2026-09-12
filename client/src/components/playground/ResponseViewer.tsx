@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Terminal, Clock, ShieldCheck, AlertCircle, Trash2, Layers, Check, Copy } from 'lucide-react';
-import { ExecutionResult } from '../../services/apiClient';
+import { ExecutionResult, BASE_URL } from '../../services/apiClient';
 
 interface ResponseViewerProps {
   result: ExecutionResult | null;
@@ -37,7 +37,7 @@ export const ResponseViewer: React.FC<ResponseViewerProps> = ({
           </div>
           <p className="text-xs font-mono text-rose-300/80 leading-relaxed">{error}</p>
           <p className="text-[11px] font-mono text-slate-500 mt-4">
-            Ensure the backend is active on <code className="text-slate-400">http://localhost:3001</code>.
+            Ensure the backend is active on <code className="text-slate-400">{BASE_URL}</code>.
           </p>
         </div>
         <button

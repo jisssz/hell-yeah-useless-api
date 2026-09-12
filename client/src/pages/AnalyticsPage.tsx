@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { RefreshCw, Activity, Clock, ShieldCheck, Cpu, Flame, Database, Terminal, Play, Zap } from 'lucide-react';
-import { fetchAnalyticsOverview } from '../services/apiClient';
+import { fetchAnalyticsOverview, BASE_URL } from '../services/apiClient';
 import { AnalyticsOverview } from '../types/api';
 import { PageHeader } from '../components/PageHeader';
 import { Badge } from '../components/Badge';
@@ -77,7 +77,7 @@ export const AnalyticsPage: React.FC = () => {
               {isLive ? 'LIVE' : 'OFFLINE'}
             </Badge>
             <span className="text-[11px] font-mono text-slate-500">
-              {isLive ? 'Connected to Gateway' : 'Connecting to http://localhost:3001'}
+              {isLive ? 'Connected to Gateway' : `Connecting to ${BASE_URL}`}
             </span>
           </div>
         }

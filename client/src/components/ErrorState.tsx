@@ -1,6 +1,7 @@
 import React from 'react';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
 import { Button } from './Button';
+import { BASE_URL } from '../services/apiClient';
 
 interface ErrorStateProps {
   title?: string;
@@ -11,7 +12,7 @@ interface ErrorStateProps {
 
 export const ErrorState: React.FC<ErrorStateProps> = ({
   title = 'Service Anomaly Detected',
-  message = 'Failed to connect to USELESS API Gateway. Please ensure backend is active on http://localhost:3001.',
+  message = `Failed to connect to USELESS API Gateway. Please ensure backend is active on ${BASE_URL}.`,
   onRetry,
   className = '',
 }) => {
