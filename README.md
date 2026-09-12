@@ -145,10 +145,10 @@ All endpoints return standard JSON responses with telemetry headers: `X-Request-
 |---|---|---|---|
 | `GET` | `/api/v1/vibe` | Developer energy & cosmos vibe reading | *None* |
 | `GET` | `/api/v1/motivation` | Counter-productive motivational advice | *None* |
-| `GET` | `/api/v1/necessity?duration=45&attendees=6` | Meeting necessity calculator & cancellation excuse | `?duration=45&attendees=6` |
+| `GET` | `/api/v1/necessity?thing=another%20todo%20app` | Necessity calculator & verdict | `?thing=another%20todo%20app` |
 | `POST` | `/api/v1/decision` | Deterministic binary resolution | `{"question": "Should I refactor in Rust?"}` |
-| `POST` | `/api/v1/roast` | Architectural stack roast | `{"stack": ["PHP", "jQuery", "WordPress"]}` |
-| `POST` | `/api/v1/excuse` | Corporate & engineering scapegoats | `{"category": "deployment"}` |
+| `POST` | `/api/v1/roast` | Architectural & code roast | `{"text": "I will finish my project tonight."}` |
+| `POST` | `/api/v1/excuse` | Corporate & engineering scapegoats | `{"situation": "broke production staging"}` |
 | `GET` | `/api/v1/analytics/overview` | Global telemetry metrics & live logs | *None* |
 
 ---
@@ -187,9 +187,10 @@ For Hardware:
 
 ### Additional Demos
 - **GitHub Repository**: [https://github.com/jisssz/hell-yeah-useless-api](https://github.com/jisssz/hell-yeah-useless-api)
+- **Production Backend URL**: [https://hell-yeah-useless-api.onrender.com](https://hell-yeah-useless-api.onrender.com)
+- **Live Gateway Health**: [https://hell-yeah-useless-api.onrender.com/health](https://hell-yeah-useless-api.onrender.com/health)
+- **Live Telemetry Stream**: [https://hell-yeah-useless-api.onrender.com/api/v1/analytics/overview](https://hell-yeah-useless-api.onrender.com/api/v1/analytics/overview)
 - **Local API Playground**: `http://localhost:5173/playground`
-- **Live Gateway Health**: `http://localhost:3001/health`
-- **Telemetry Stream**: `http://localhost:3001/api/v1/analytics/overview`
 
 ---
 
