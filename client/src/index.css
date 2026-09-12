@@ -38,3 +38,28 @@
     linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Comic neo-brutal drop-shadow */
+.shadow-comic {
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+.shadow-comic-yellow {
+  box-shadow: 4px 4px 0px 0px #ffcc00;
+}
+.shadow-comic-blue {
+  box-shadow: 4px 4px 0px 0px #0066ff;
+}
+

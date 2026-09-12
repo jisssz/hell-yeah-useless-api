@@ -182,9 +182,9 @@ export const PlaygroundPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <PageHeader
-        badge={<Badge variant="brand">Real HTTP Testbed</Badge>}
-        title="API Playground"
-        description="Send real requests to APIs that solve problems nobody has. Test latency, inspected headers, rate limits, and live responses."
+        badge={<Badge variant="brand">⚡ Real Live HTTP Engine • പച്ചയായ സത്യം</Badge>}
+        title="API Playground (പരീക്ഷണശാല)"
+        description="Send real requests to APIs that solve problems nobody asked you to solve. Test latency, inspected headers, rate limits, and live responses with 100% genuine backend telemetry."
       />
 
       {/* Main Two-Column Playground Workspace */}

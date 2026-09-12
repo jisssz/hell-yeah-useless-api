@@ -51,15 +51,15 @@ curl -X POST "${BASE_URL}/api/v1/decision" \\
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
       <PageHeader
-        badge={<Badge variant="brand">Platform Manual & Reference</Badge>}
-        title="Documentation"
-        description="Everything you need to integrate infrastructure that should probably not exist."
+        badge={<Badge variant="brand">🍋 Platform Manual &amp; Satyavangmoolam</Badge>}
+        title="NARAGAM EVide? Docs"
+        description="Everything you need to integrate infrastructure that nobody asked you to build. Enterprise stability for Malayalam developer satire."
         actions={
           <Link
             to="/playground"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono text-xs font-bold transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#ffe814] hover:bg-yellow-300 text-black border-2 border-black font-mono text-xs font-black transition-colors shadow-comic-sm cursor-pointer"
           >
-            <Play className="w-3.5 h-3.5" />
+            <Play className="w-3.5 h-3.5 fill-current" />
             <span>Open Playground</span>
           </Link>
         }

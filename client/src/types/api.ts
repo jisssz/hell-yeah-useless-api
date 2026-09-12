@@ -15,7 +15,7 @@ export interface ApiMetadata {
   endpoint: string;
   description: string;
   tagline: string;
-  category: 'Spiritual Assessment' | 'Developer Therapy' | 'Product Validation' | 'Algorithmic Arbitrage' | 'Code Review' | 'Ops & Compliance';
+  category: string;
   explanation: string;
   requiredInput: string;
   uselessnessScore: number;

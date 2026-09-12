@@ -4,7 +4,7 @@ import { RefreshCw, Activity, Clock, ShieldCheck, Cpu, Flame, Database, Terminal
 import { fetchAnalyticsOverview, BASE_URL } from '../services/apiClient';
 import { AnalyticsOverview } from '../types/api';
 import { PageHeader } from '../components/PageHeader';
-import { Badge } from '../components/Badge';
+
 import { Button } from '../components/Button';
 import { LoadingState } from '../components/LoadingState';
 import { ErrorState } from '../components/ErrorState';
@@ -73,16 +73,16 @@ export const AnalyticsPage: React.FC = () => {
       <PageHeader
         badge={
           <div className="flex items-center gap-2">
-            <Badge variant={isLive ? 'brand' : 'warning'}>
-              {isLive ? 'LIVE' : 'OFFLINE'}
-            </Badge>
-            <span className="text-[11px] font-mono text-slate-500">
-              {isLive ? 'Connected to Gateway' : `Connecting to ${BASE_URL}`}
+            <span className={`px-2.5 py-1 rounded text-xs font-mono font-bold border-2 border-black ${isLive ? 'bg-[#38ef7d] text-black shadow-comic-sm' : 'bg-[#ff3366] text-white shadow-comic-sm'}`}>
+              {isLive ? '● LIVE CONTROL ROOM' : '○ OFFLINE'}
+            </span>
+            <span className="text-[11px] font-mono text-slate-400">
+              {isLive ? 'Connected to Render Gateway' : `Connecting to ${BASE_URL}`}
             </span>
           </div>
         }
-        title="Usage Analytics"
-        description="Proof that somebody is actually calling these APIs. Real-time telemetry recorded across all endpoints."
+        title="NARAGAM CONTROL ROOM"
+        description="Monitoring absolutely critical nonsense. Real-time in-memory telemetry, SLA tracking, and live requests captured straight from the Render backend."
         actions={
           <div className="flex items-center gap-3">
             {lastRefreshed && (
@@ -102,9 +102,9 @@ export const AnalyticsPage: React.FC = () => {
             </Button>
             <Link
               to="/playground"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono text-xs font-bold transition-colors shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#ffe814] hover:bg-yellow-300 text-black border-2 border-black font-mono text-xs font-black transition-colors shadow-comic-sm cursor-pointer"
             >
-              <Play className="w-3.5 h-3.5" />
+              <Play className="w-3.5 h-3.5 fill-current" />
               <span>Test APIs</span>
             </Link>
           </div>
@@ -122,19 +122,19 @@ export const AnalyticsPage: React.FC = () => {
       )}
 
       {data && data.totalRequests === 0 && (
-        <div className="text-center py-20 px-4 border border-dashed border-slate-800 rounded-xl bg-slate-900/20 max-w-lg mx-auto space-y-4 font-mono">
+        <div className="text-center py-20 px-4 border-2 border-dashed border-slate-800 rounded-xl bg-slate-900/20 max-w-lg mx-auto space-y-4 font-mono">
           <Terminal className="w-12 h-12 text-slate-600 mx-auto" />
           <div>
-            <h3 className="text-base font-bold text-white">No requests yet.</h3>
+            <h3 className="text-base font-bold text-white">ഇതുവരെ ഒരു പണിയും കിട്ടിയിട്ടില്ല.</h3>
             <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-              The infrastructure is ready. Humanity simply hasn't needed it.
+              നാരങ്ങാവെള്ളം ഓർഡർ ചെയ്യാൻ ആരുമില്ല... The infrastructure is ready. Humanity simply hasn't needed it yet.
             </p>
           </div>
           <Link
             to="/playground"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-500 text-slate-950 text-xs font-bold font-mono transition-colors shadow-md shadow-emerald-500/10"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#ffe814] text-black border-2 border-black text-xs font-black font-mono shadow-comic hover:bg-yellow-300 transition-colors"
           >
-            <Play className="w-4 h-4" />
+            <Play className="w-4 h-4 fill-current" />
             <span>Open Playground</span>
           </Link>
         </div>
@@ -145,45 +145,45 @@ export const AnalyticsPage: React.FC = () => {
           {/* Key Metric Cards */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {/* Total Requests */}
-            <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider">Total Requests</span>
-                <Activity className="w-4 h-4 text-emerald-400" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">TOTAL PANI</span>
+                <Activity className="w-4 h-4 text-[#38ef7d]" />
               </div>
               <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
                 {data.totalRequests.toLocaleString()}
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-1 block">Lifetime buffer</span>
+              <span className="text-[10px] font-mono text-slate-400 mt-1 block">ആകെ അടിച്ച റിക്വസ്റ്റ്</span>
             </div>
 
             {/* Requests Today */}
-            <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider">Requests Today</span>
-                <Clock className="w-4 h-4 text-indigo-400" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">TODAY'S PANI</span>
+                <Clock className="w-4 h-4 text-[#ffe814]" />
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-[#ffe814] font-mono">
                 {data.requestsToday.toLocaleString()}
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-1 block">Since 00:00 UTC</span>
+              <span className="text-[10px] font-mono text-slate-400 mt-1 block">ഇന്നത്തെ പണി</span>
             </div>
 
             {/* Average Latency */}
-            <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider">Avg Latency</span>
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">VEGAM (LATENCY)</span>
                 <Cpu className="w-4 h-4 text-cyan-400" />
               </div>
               <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">
                 {data.averageLatencyMs} <span className="text-xs font-normal">ms</span>
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-1 block">p95: {data.p95LatencyMs}ms</span>
+              <span className="text-[10px] font-mono text-slate-400 mt-1 block">p95: {data.p95LatencyMs}ms</span>
             </div>
 
             {/* Fastest / Slowest */}
-            <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider">Latency Range</span>
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">VEGAM RANGE</span>
                 <Zap className="w-4 h-4 text-amber-400" />
               </div>
               <div className="text-sm font-extrabold text-white font-mono mt-1">
@@ -195,27 +195,27 @@ export const AnalyticsPage: React.FC = () => {
             </div>
 
             {/* Error Rate */}
-            <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider">Error Rate</span>
-                <ShieldCheck className="w-4 h-4 text-amber-400" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">PANI PAALI</span>
+                <ShieldCheck className="w-4 h-4 text-rose-400" />
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-amber-400 font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-rose-400 font-mono">
                 {data.errorRatePercent}%
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-1 block">4xx & 5xx calls</span>
+              <span className="text-[10px] font-mono text-slate-400 mt-1 block">4xx &amp; 5xx calls</span>
             </div>
 
             {/* Global Score */}
-            <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/40">
+            <div className="p-4 rounded-xl border-2 border-black bg-slate-900/90 shadow-comic-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-[11px] font-mono uppercase tracking-wider">Useless Score</span>
-                <Flame className="w-4 h-4 text-rose-400" />
+                <span className="text-[11px] font-mono uppercase tracking-wider font-bold">PANI INDEX</span>
+                <Flame className="w-4 h-4 text-orange-400" />
               </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-rose-400 font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-orange-400 font-mono">
                 {data.globalUselessness}
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-1 block">Pointless metric</span>
+              <span className="text-[10px] font-mono text-slate-400 mt-1 block">തട്ടിപ്പ് സ്കോർ</span>
             </div>
           </div>
 

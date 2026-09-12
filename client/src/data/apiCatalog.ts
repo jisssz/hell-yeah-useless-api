@@ -3,18 +3,18 @@ import { ApiMetadata } from '../types/api';
 export const API_CATALOG: ApiMetadata[] = [
   {
     slug: 'vibe',
-    name: 'Vibe API',
+    name: 'Vibe Oracle (വൈബ് ഒറാക്കിൾ)',
     method: 'GET',
     endpoint: '/api/v1/vibe',
-    tagline: 'Because your codebase deserves a spiritual assessment.',
-    description: 'Returns an intentionally useless developer vibe analysis, frequency harmonic, chaos quotient, and unwarranted recommendations.',
-    category: 'Spiritual Assessment',
-    explanation: 'Leverages quantum pseudorandomness to assess the metaphysical state of your git repository, developer aura, and astrological build risks.',
-    requiredInput: 'None. Just ambient despair.',
+    tagline: 'Find out whether today is giving pani or peace.',
+    description: 'Kaavile paattu malsaram kazhinjo? Returns real-time metaphysical git rebase diagnostics, frequency harmonics, chaos levels, and completely unhinged lifestyle advice.',
+    category: 'Spiritual Diagnostics',
+    explanation: 'Evaluates your code karma and astrologically predicts whether your next push will trigger a production fire.',
+    requiredInput: 'None. Just ambient Malayalam existential dread.',
     uselessnessScore: 99.8,
     queryParams: [],
     exampleRequest: {
-      curl: 'curl -X GET "https://api.uselessapi.dev/api/v1/vibe" \\\n  -H "X-API-Key: uk_live_sample"'
+      curl: 'curl -X GET "https://hell-yeah-useless-api.onrender.com/api/v1/vibe" \\\n  -H "X-API-Key: uk_live_sample"'
     },
     exampleResponse: {
       vibe: "Git Rebase Despair",
@@ -28,18 +28,18 @@ export const API_CATALOG: ApiMetadata[] = [
   },
   {
     slug: 'motivation',
-    name: 'Motivation API',
+    name: 'Motivation Oracle (എന്തിനാ മോട്ടിവേഷൻ?)',
     method: 'GET',
     endpoint: '/api/v1/motivation',
-    tagline: 'Brutal honesty, available over HTTP.',
-    description: 'Provides razor-sharp, demotivating truths about software engineering, dead sprint goals, and the illusion of control.',
-    category: 'Developer Therapy',
-    explanation: 'Designed to disabuse engineers of misplaced optimism before major product deployments or architecture review meetings.',
-    requiredInput: 'None. Reality is free.',
+    tagline: 'Enterprise-grade demotivation nobody requested.',
+    description: 'Provides razor-sharp, fatalistic truths about software engineering, dead sprint goals, and the illusion that sprint retrospectives accomplish anything.',
+    category: 'Manavalan Therapy',
+    explanation: 'Designed by senior Malayali developers to dissolve optimism before sprint planning meetings.',
+    requiredInput: 'None. Reality is 100% free.',
     uselessnessScore: 98.9,
     queryParams: [],
     exampleRequest: {
-      curl: 'curl -X GET "https://api.uselessapi.dev/api/v1/motivation" \\\n  -H "X-API-Key: uk_live_sample"'
+      curl: 'curl -X GET "https://hell-yeah-useless-api.onrender.com/api/v1/motivation" \\\n  -H "X-API-Key: uk_live_sample"'
     },
     exampleResponse: {
       motivation: 5,
@@ -53,13 +53,13 @@ export const API_CATALOG: ApiMetadata[] = [
   },
   {
     slug: 'necessity',
-    name: 'Necessity API',
+    name: 'Necessity Oracle (ഇത് വേണമായിരുന്നോ?)',
     method: 'GET',
     endpoint: '/api/v1/necessity',
     tagline: 'Find out whether your idea should exist.',
-    description: 'Rigorous algorithmic proof explaining why your proposed software project or dependency is strictly non-essential.',
-    category: 'Product Validation',
-    explanation: 'Runs multi-universe simulations comparing human flourishing with and without your feature, concluding with mathematically sound dismissals.',
+    description: 'Thilakan-level algorithmic critique proving why your proposed software project or 45-minute standup is strictly superfluous to the universe.',
+    category: 'Existential Audit',
+    explanation: 'Runs parallel universe simulations comparing human civilization with and without your feature, concluding with mathematically sound dismissals.',
     requiredInput: "Query parameter 'thing' (string)",
     uselessnessScore: 99.7,
     queryParams: [
@@ -67,12 +67,12 @@ export const API_CATALOG: ApiMetadata[] = [
         name: 'thing',
         type: 'string',
         required: true,
-        description: 'The concept, package, or application to evaluate for existential relevance.',
+        description: 'The concept, application, or meeting to evaluate for existential relevance.',
         example: 'another todo app'
       }
     ],
     exampleRequest: {
-      curl: 'curl -X GET "https://api.uselessapi.dev/api/v1/necessity?thing=another%20todo%20app" \\\n  -H "X-API-Key: uk_live_sample"'
+      curl: 'curl -X GET "https://hell-yeah-useless-api.onrender.com/api/v1/necessity?thing=another%20todo%20app" \\\n  -H "X-API-Key: uk_live_sample"'
     },
     exampleResponse: {
       thing: "another todo app",
@@ -87,13 +87,13 @@ export const API_CATALOG: ApiMetadata[] = [
   },
   {
     slug: 'decision',
-    name: 'Decision API',
+    name: 'Decision Engine (തീരുമാനം ആയോ?)',
     method: 'POST',
     endpoint: '/api/v1/decision',
-    tagline: 'Definitive answers to trivial dilemmas.',
-    description: 'Accepts difficult existential choices and outputs an unyielding, mathematically unsupported decision with confident rationales.',
+    tagline: 'Because making your own decisions is apparently too difficult.',
+    description: 'Accepts existential engineering dilemmas and outputs an unyielding, mathematically unsupported decision with aggressive rationales.',
     category: 'Algorithmic Arbitrage',
-    explanation: 'Eliminates decision paralysis by outsourcing personal agency to an uncalibrated deterministic pseudo-randomizer.',
+    explanation: 'Eliminates developer decision paralysis by outsourcing personal responsibility to an uncalibrated deterministic pseudo-randomizer.',
     requiredInput: 'JSON object with a "question" string.',
     uselessnessScore: 98.6,
     requestBodyFields: [
@@ -101,12 +101,12 @@ export const API_CATALOG: ApiMetadata[] = [
         name: 'question',
         type: 'string',
         required: true,
-        description: 'The binary dilemma or query demanding unyielding resolution.',
+        description: 'The dilemma or question demanding unyielding resolution.',
         example: 'Should I order biriyani?'
       }
     ],
     exampleRequest: {
-      curl: 'curl -X POST "https://api.uselessapi.dev/api/v1/decision" \\\n  -H "Content-Type: application/json" \\\n  -d \'{"question": "Should I order biriyani?"}\'',
+      curl: 'curl -X POST "https://hell-yeah-useless-api.onrender.com/api/v1/decision" \\\n  -H "Content-Type: application/json" \\\n  -d \'{"question": "Should I order biriyani?"}\'',
       body: { question: "Should I order biriyani?" }
     },
     exampleResponse: {
@@ -122,13 +122,13 @@ export const API_CATALOG: ApiMetadata[] = [
   },
   {
     slug: 'roast',
-    name: 'Roast API',
+    name: 'Tech Stack Roaster (റോസ്റ്റിംഗ് ചേട്ടൻ)',
     method: 'POST',
     endpoint: '/api/v1/roast',
-    tagline: 'Automated code and life review with extreme prejudice.',
-    description: 'Accepts developer plans, code snippets, or optimistic timelines and returns a severe, technical roast.',
-    category: 'Code Review',
-    explanation: 'Trained on 15 years of frustrated pull-request comments, HN debates, and compiler error logs.',
+    tagline: 'Submit your stack. Receive emotional damage.',
+    description: 'Accepts developer claims, tech stacks, or ambitious timelines and delivers a severe, unvarnished Malayali review.',
+    category: 'Code Review & Kunjappan',
+    explanation: 'Trained on 15 years of frustrated pull-request comments, HN arguments, and compiler crash logs.',
     requiredInput: 'JSON object with a "text" string.',
     uselessnessScore: 99.1,
     requestBodyFields: [
@@ -136,12 +136,12 @@ export const API_CATALOG: ApiMetadata[] = [
         name: 'text',
         type: 'string',
         required: true,
-        description: 'The statement, boast, or code claim to ruthlessly dismantle.',
+        description: 'The boast, code claim, or tech stack to ruthlessly dismantle.',
         example: 'I will finish my project tonight.'
       }
     ],
     exampleRequest: {
-      curl: 'curl -X POST "https://api.uselessapi.dev/api/v1/roast" \\\n  -H "Content-Type: application/json" \\\n  -d \'{"text": "I will finish my project tonight."}\'',
+      curl: 'curl -X POST "https://hell-yeah-useless-api.onrender.com/api/v1/roast" \\\n  -H "Content-Type: application/json" \\\n  -d \'{"text": "I will finish my project tonight."}\'',
       body: { text: "I will finish my project tonight." }
     },
     exampleResponse: {
@@ -155,13 +155,13 @@ export const API_CATALOG: ApiMetadata[] = [
   },
   {
     slug: 'excuse',
-    name: 'Excuse API',
+    name: 'Excuse Generator (അണ്ണാ... ഒരു ന്യായീകരണം)',
     method: 'POST',
     endpoint: '/api/v1/excuse',
     tagline: 'Enterprise-grade plausible deniability.',
-    description: 'Generates technically convoluted, unfalsifiable developer excuses for missed deadlines, broken builds, and outages.',
-    category: 'Ops & Compliance',
-    explanation: 'Formulates excuses using high-density distributed systems jargon calculated to silence non-technical stakeholders instantly.',
+    description: 'Generates technically convoluted, unfalsifiable developer excuses to deflect blame for broken staging, dropped schemas, or missing features.',
+    category: 'Standup Defense',
+    explanation: 'Formulates excuses using high-density distributed systems jargon calculated to silence non-technical scrum masters instantly.',
     requiredInput: 'JSON object with a "situation" string.',
     uselessnessScore: 97.9,
     requestBodyFields: [
@@ -174,7 +174,7 @@ export const API_CATALOG: ApiMetadata[] = [
       }
     ],
     exampleRequest: {
-      curl: 'curl -X POST "https://api.uselessapi.dev/api/v1/excuse" \\\n  -H "Content-Type: application/json" \\\n  -d \'{"situation": "missed a deadline"}\'',
+      curl: 'curl -X POST "https://hell-yeah-useless-api.onrender.com/api/v1/excuse" \\\n  -H "Content-Type: application/json" \\\n  -d \'{"situation": "missed a deadline"}\'',
       body: { situation: "missed a deadline" }
     },
     exampleResponse: {

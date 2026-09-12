@@ -20,12 +20,25 @@ export default {
           100: '#f1f5f9',
           800: '#1e293b',
           900: '#0f172a',
-          950: '#020617',
+          950: '#060810',
+        },
+        kerala: {
+          blue: '#0066ff',
+          yellow: '#ffcc00',
+          lime: '#a3e635',
+          red: '#ef4444',
+          orange: '#f97316',
+          dark: '#08080d',
+          card: '#101320',
+          cream: '#fefce8',
         }
       },
       fontFamily: {
-        mono: ['JetBrains Mono', 'Fira Code', 'Menlo', 'Monaco', 'Courier New', 'monospace'],
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'Menlo', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        bungee: ['Bungee', 'cursive', 'sans-serif'],
+        malayalam: ['Noto Sans Malayalam', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
       }
     },
   },

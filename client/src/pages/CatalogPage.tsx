@@ -53,56 +53,56 @@ export const CatalogPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <PageHeader
-        badge={<Badge variant="brand">API Directory & Marketplace</Badge>}
-        title="API Catalog"
-        description="Explore all six microservices engineered strictly for satirical inefficacy. Real endpoints, instant telemetry, and zero productive utility."
+        badge={<Badge variant="brand">🍋 6 REAL ENDPOINTS • ഒരു കാര്യവും നടക്കില്ല</Badge>}
+        title="API Catalog (ആറ് അഗ്രഗണ്യന്മാർ)"
+        description="Explore all six microservices engineered strictly for satirical inefficacy. Real endpoints, instant telemetry, and 100% genuine Mallu existentialism."
         actions={
           <Link
             to="/playground"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono text-xs font-bold transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#ffe814] hover:bg-yellow-300 text-black border-2 border-black font-mono text-xs font-black transition-colors shadow-comic-sm cursor-pointer"
           >
-            <Play className="w-3.5 h-3.5" />
+            <Play className="w-3.5 h-3.5 fill-current" />
             <span>Open Playground</span>
           </Link>
         }
       />
 
       {/* Platform Summary Bar */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl border border-slate-800 bg-slate-900/40 text-xs font-mono">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl border-2 border-black bg-slate-900/90 text-xs font-mono shadow-comic-sm">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+          <div className="p-2 rounded-lg bg-emerald-500/10 text-[#38ef7d] border border-emerald-500/30">
             <Layers className="w-4 h-4" />
           </div>
           <div>
             <div className="text-slate-400">Catalog Size</div>
-            <div className="text-white font-bold text-sm">{stats.totalApis} APIs</div>
+            <div className="text-white font-bold text-sm">{stats.totalApis} APIs (ആകെ എണ്ണം)</div>
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
+          <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/30">
             <SlidersHorizontal className="w-4 h-4" />
           </div>
           <div>
             <div className="text-slate-400">HTTP Methods</div>
-            <div className="text-white font-bold text-sm">{stats.uniqueMethods} (GET & POST)</div>
+            <div className="text-white font-bold text-sm">{stats.uniqueMethods} (GET &amp; POST)</div>
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+          <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
             <Terminal className="w-4 h-4" />
           </div>
           <div>
             <div className="text-slate-400">Mean Uselessness</div>
-            <div className="text-white font-bold text-sm">{stats.avgScore}%</div>
+            <div className="text-[#ffe814] font-bold text-sm">{stats.avgScore}% (സ്കോർ)</div>
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-rose-500/10 text-rose-400">
+          <div className="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/30">
             <span className="font-bold text-xs">0</span>
           </div>
           <div>
             <div className="text-slate-400">Problems Solved</div>
-            <div className="text-rose-400 font-bold text-sm">0 (Guaranteed)</div>
+            <div className="text-[#ff3366] font-bold text-sm">0 (ഗ്യാരണ്ടി)</div>
           </div>
         </div>
       </div>

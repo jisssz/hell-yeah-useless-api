@@ -1,7 +1,7 @@
 import React from 'react';
 import { Play, RotateCcw, Key, HelpCircle } from 'lucide-react';
 import { ApiMetadata } from '../../types/api';
-import { Button } from '../Button';
+
 
 interface RequestBuilderProps {
   api: ApiMetadata;
@@ -122,9 +122,9 @@ export const RequestBuilder: React.FC<RequestBuilderProps> = ({
 
       {/* No params info for /vibe and /motivation */}
       {!hasQueryParams && !hasBodyFields && (
-        <div className="p-3.5 rounded-lg border border-slate-800/80 bg-slate-950/40 text-xs font-mono text-slate-400 flex items-start gap-2.5">
-          <HelpCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-          <span>This endpoint requires zero inputs. Pointless computation is generated deterministically.</span>
+        <div className="p-3.5 rounded-lg border border-amber-500/30 bg-amber-500/5 text-xs font-mono text-amber-200/90 flex items-start gap-2.5">
+          <HelpCircle className="w-4 h-4 text-[#ffe814] shrink-0 mt-0.5" />
+          <span>നാരങ്ങാവെള്ളം പോലെ സിമ്പിൾ — This endpoint requires zero inputs. Pure deterministic existential nonsense generated instantly.</span>
         </div>
       )}
 
@@ -132,8 +132,8 @@ export const RequestBuilder: React.FC<RequestBuilderProps> = ({
       <div className="space-y-1.5 pt-2 border-t border-slate-800/80">
         <div className="flex items-center justify-between text-xs font-mono">
           <span className="text-slate-300 flex items-center gap-1.5">
-            <Key className="w-3.5 h-3.5 text-indigo-400" />
-            API Key
+            <Key className="w-3.5 h-3.5 text-[#ffe814]" />
+            <span>API Key (കള്ളത്താക്കോൽ)</span>
           </span>
           <span className="text-slate-500">Optional</span>
         </div>
@@ -142,35 +142,31 @@ export const RequestBuilder: React.FC<RequestBuilderProps> = ({
           value={apiKey}
           onChange={(e) => onApiKeyChange(e.target.value)}
           placeholder="Enter API key (e.g. uk_live_mykey or uk_dev_sandbox)"
-          className="w-full bg-slate-900/90 border border-slate-800 rounded-lg px-3.5 py-2 text-xs font-mono text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+          className="w-full bg-slate-900/90 border border-slate-800 rounded-lg px-3.5 py-2 text-xs font-mono text-slate-200 placeholder-slate-600 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition-all"
         />
         <p className="text-[11px] font-mono text-slate-500">
-          Backend recognizes keys with <code className="text-slate-400">uk_live_*</code> (Production) or <code className="text-slate-400">uk_dev_*</code> (Sandbox).
+          Backend recognizes <code className="text-emerald-400">uk_live_*</code> (Production) or <code className="text-amber-400">uk_dev_*</code> (Sandbox) simulated keys.
         </p>
       </div>
 
       {/* Action Buttons */}
       <div className="flex items-center gap-3 pt-2">
-        <Button
+        <button
           type="submit"
-          variant="primary"
-          size="md"
           disabled={isLoading}
-          icon={<Play className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />}
-          className="flex-1 font-mono text-xs font-bold"
+          className="flex-1 font-mono text-xs font-black py-3 px-5 rounded-lg bg-[#ffe814] text-black border-2 border-black shadow-comic hover:bg-yellow-300 active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          {isLoading ? 'Executing Request...' : 'Send Request'}
-        </Button>
-        <Button
+          <Play className={`w-4 h-4 ${isLoading ? 'animate-spin' : 'fill-current'}`} />
+          <span>{isLoading ? 'പണി നടക്കുന്നു... (EXECUTING)' : 'CHEYYAM (SEND REQUEST) 🔥'}</span>
+        </button>
+        <button
           type="button"
-          variant="outline"
-          size="md"
           onClick={onReset}
-          icon={<RotateCcw className="w-3.5 h-3.5" />}
-          className="shrink-0 text-xs font-mono"
+          className="shrink-0 text-xs font-mono font-bold py-3 px-4 rounded-lg bg-[#1e293b] text-slate-300 border-2 border-slate-700 hover:bg-slate-800 hover:text-white active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-1.5 cursor-pointer"
         >
-          Reset
-        </Button>
+          <RotateCcw className="w-3.5 h-3.5" />
+          <span>RESET CHEYY</span>
+        </button>
       </div>
     </form>
   );
