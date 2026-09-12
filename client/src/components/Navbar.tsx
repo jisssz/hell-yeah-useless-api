@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Terminal, Activity, BookOpen, Layers, Menu, X, Sparkles, ArrowRight } from 'lucide-react';
+import { Terminal, Activity, BookOpen, Layers, Menu, X, Sparkles, ArrowRight, Play } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -8,13 +8,14 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'APIs', path: '/apis', icon: <Layers className="w-4 h-4" /> },
+    { name: 'Playground', path: '/playground', icon: <Play className="w-4 h-4" /> },
     { name: 'Docs', path: '/docs', icon: <BookOpen className="w-4 h-4" /> },
     { name: 'Analytics', path: '/analytics', icon: <Activity className="w-4 h-4" /> },
   ];
 
   const isActive = (path: string) => {
     if (path === '/apis') {
-      return location.pathname.startsWith('/apis');
+      return location.pathname === '/apis' || location.pathname.startsWith('/apis/');
     }
     return location.pathname === path;
   };
@@ -70,7 +71,7 @@ export const Navbar: React.FC = () => {
             <span>99.8% Useless SLA</span>
           </div>
           <Link
-            to="/apis/vibe"
+            to="/playground"
             className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm font-semibold transition-colors shadow-sm"
           >
             <span>Try an API</span>
@@ -110,7 +111,7 @@ export const Navbar: React.FC = () => {
           ))}
           <div className="pt-3 border-t border-slate-800">
             <Link
-              to="/apis/vibe"
+              to="/playground"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-500 text-slate-950 font-semibold text-sm"
             >

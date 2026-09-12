@@ -47,17 +47,29 @@ export const ApiDetailPage: React.FC = () => {
       </div>
 
       {/* Header section */}
-      <div className="border-b border-slate-800 pb-8 mb-8">
-        <div className="flex flex-wrap items-center gap-3 mb-3">
-          <EndpointBadge method={api.method} />
-          <span className="font-mono text-sm text-slate-400 font-semibold">{api.endpoint}</span>
-          <Badge variant="brand">{api.uselessnessScore}% Uselessness SLA</Badge>
-          <Badge variant="purple">{api.category}</Badge>
+      <div className="border-b border-slate-800 pb-8 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <EndpointBadge method={api.method} />
+            <span className="font-mono text-sm text-slate-400 font-semibold">{api.endpoint}</span>
+            <Badge variant="brand">{api.uselessnessScore}% Uselessness SLA</Badge>
+            <Badge variant="purple">{api.category}</Badge>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">{api.name}</h1>
+          <p className="text-sm font-mono text-emerald-400/90 mt-2">{api.tagline}</p>
+          <p className="text-base text-slate-300 mt-3 max-w-3xl leading-relaxed">{api.description}</p>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">{api.name}</h1>
-        <p className="text-sm font-mono text-emerald-400/90 mt-2">{api.tagline}</p>
-        <p className="text-base text-slate-300 mt-3 max-w-3xl leading-relaxed">{api.description}</p>
+        <div className="shrink-0">
+          <Link
+            to={`/playground?api=${api.slug}`}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold font-mono transition-colors shadow-md shadow-emerald-500/10"
+          >
+            <Terminal className="w-4 h-4" />
+            <span>Open in Playground</span>
+          </Link>
+        </div>
       </div>
 
       {/* Main Content Layout */}
@@ -180,14 +192,12 @@ export const ApiDetailPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <a
-            href={`http://localhost:3001${api.endpoint}${api.slug === 'necessity' ? '?thing=another%20todo%20app' : ''}`}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to={`/playground?api=${api.slug}`}
             className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold font-mono transition-colors"
           >
-            Direct HTTP Test
-          </a>
+            Launch in Playground
+          </Link>
         </section>
       </div>
     </div>

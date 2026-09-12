@@ -43,7 +43,7 @@ export const LandingPage: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
-            to="/apis/vibe"
+            to="/playground"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium text-base border border-slate-700/80 transition-all"
           >
             <Terminal className="w-4 h-4 text-emerald-400" />
