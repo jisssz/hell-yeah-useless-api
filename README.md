@@ -231,9 +231,9 @@ flowchart TD
 
 # Video
 
-[Watch the `നരകം EVIDEHHHH ?` Demo](docs/demo-video.mp4)
+[Watch the `നരകം EVIDEHHHH ?` Demo Video](https://drive.google.com/drive/folders/1gsE-ArgAIBeq_0l-RhLt28UNK5xYpuej?usp=drive_link)
 
-*Full demonstration of the live API Playground, real HTTP requests, API responses, rate limiting, telemetry, analytics, and the over-engineered useless API platform.*
+*2-minute demonstration of the live API Playground, real HTTP requests, API responses, rate limiting, cURL execution, telemetry, and the real-time observability control room.*
 
 # Additional Demos
 
